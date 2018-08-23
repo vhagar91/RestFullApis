@@ -1,0 +1,691 @@
+<div id="confirm-lenguaje-project" class="hide"
+     data-title="{{ 'backend.title_modal_delete' | trans }}"
+     data-content="{{ 'backend.content_delete_modal.project' | trans }}"
+     data-confirmbutton="{{ 'backend.btn_yes' | trans }}"
+     data-cancelbutton="{{ 'backend.btn_no' | trans }}">
+</div>
+
+<div id="main_project" data-action="{{ path('backend_main_project') }}" class="col-lg-12">
+    <div class="row">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>{{ 'backend.title_grid_project' | trans }}</h5>
+
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="fullscreen-link">
+                                    <i class="fa fa-expand"></i>
+                                </a>
+                                <a class="dropdown-toggle refresh-project" href="#">
+                                    <i class="fa fa-rotate-left"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-gear"></i>
+                                </a>
+                                <!--ul class="dropdown-menu dropdown-user">
+                                    <li>
+                                        <a href="#modal-new-project" data-toggle="modal" data-action="{{ path('save_project') }}" data-action-success="{{ path('homepage') }}" class="new-project">{{ 'backend.btn_add.project' | trans }}</a>
+                                    </li>
+                                </ul-->
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <table class="table table-striped table-bordered table-hover " id="table-projects">
+                                <thead>
+                                <trli>
+                                    <th>{{ 'backend.column_id' | trans }}</th>
+                                    <th data-toggle="true">{{ 'backend.column_project.project' | trans }}</th>
+                                    <th>{{ 'backend.column_description' | trans }}</th>
+                                    <th data-hide="all">{{ 'backend.column_aplitype.project' | trans }}</th>
+                                    <th>{{ 'backend.column_action' | trans }}</th>
+                                </trli>
+                                </thead>
+                                <tbody>
+                                {% for project in projects %}
+                                    <div id="{{ 'project_id_data_' ~ project.id}}" class="hide" style="display: none">
+                                        {
+                                        "id":{{ project.id }},
+                                        "frontendbundle_datproject[name]": "{{ project.name }}",
+                                        "frontendbundle_datproject[description]": "{{ project.description }}",
+                                        "frontendbundle_datproject[applicationtype]": {{ project.applicationtype.id }}
+                                        {% set counter = 0 %}
+                                        {% for url in project.urls %}
+                                            ,"frontendbundle_datproject[urls][{{ counter }}][dir]": "{{ url.dir }}"
+                                            {% set counter = counter + 1 %}
+                                        {% endfor %}
+                                        {% set counter = 0 %}
+                                        {% for apiproject in project.apisprojects %}
+                                            ,"frontendbundle_datproject[apisprojects][{{ counter }}][apikey]": "{{ apiproject.apikey }}",
+                                            "frontendbundle_datproject[apisprojects][{{ counter }}][api]": {{ apiproject.api.id }}
+                                            {% set counter = counter + 1 %}
+                                        {% endfor %}
+                                        }
+                                    </div>
+                                    <tr>
+                                        <td>{{ project.id }}</td>
+                                        <td>{{ project.name }}</td>
+                                        <td>{{ project.description }}</td>
+                                        <td>{{ project.applicationtype.name }}</td>
+                                        <td style=" text-align: center">
+                                            {#
+                                            <a href="#">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            |
+                                            #}
+                                            <a data-idproject="{{ project.id }}" href="#modal-new-project" data-toggle="modal" class="edit-project"  data-action="{{ path('backend_edit_project') }}" data-action-success="{{ path('homepage') }}">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            |
+                                            <a data-href="{{ path('backend_delete_project', {'id':project.id}) }}" href="#" class="delete-project">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <!--tfoot>
+                                <tr>
+                                    <th>Rendering engine</th>
+                                    <th>Browser</th>
+                                    <th>Platform(s)</th>
+                                    <th>Engine version</th>
+                                    <th>CSS grade</th>
+                                </tr>
+                                </tfoot-->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ include('BackendBundle:Project:modalAddProject.html.twig') }}
+
+<script>
+    var managerApisprojects = null;
+    var managerUrls = null;
+    var btnActionModal = null;
+
+    $(document).ready(function () {
+        var projectsTable = $('#table-projects').DataTable( {
+            select: true,
+            columnDefs: [
+                {
+                    "targets": [0],
+                    "visible": false,
+                    "searchable": false
+                }
+            ]
+        });
+
+        $('.refresh-project').on('click', function(){
+            updateTab('','',{});
+        });
+
+        //initDetails(projectsTable);
+        $('#modal-new-project .chosen-select').chosen();
+        $('#modal-new-project .chosen-container-single').width( '100%' );
+
+        managerApisprojects = initAddApiproject();
+        managerUrls = initAddUrl();
+        initConfirmDelete();
+        //initNewProject();
+        initEditProject();
+    });
+
+    function initDetails(projectsTable){
+        var animationIn = 'slideInDown';
+        var animationOut = 'slideOutDown';
+        projectsTable.on( 'select', function ( e, dt, type, indexes ) {
+            if ( type === 'row' ) {
+                var data = projectsTable.rows( indexes ).data()[0];
+                var detailId = '#' + 'project_id_' + data[0];
+
+                projectDetailActive.addClass(animationOut);
+                projectDetailActive.addClass('animated');
+                setTimeout(function(){
+                    projectDetailActive.addClass('hide');
+                    projectDetailActive.removeClass(animationOut);
+                    projectDetailActive.removeClass('animated');
+
+                    projectDetailActive = $(detailId);
+                    projectDetailActive.removeClass('hide');
+                    projectDetailActive.addClass(animationIn);
+                    projectDetailActive.addClass('animated');
+                    setTimeout(function(){
+                        projectDetailActive.removeClass(animationIn);
+                        projectDetailActive.removeClass('animated');
+                    }, 800);
+                }, 100);
+            }
+        } );
+
+        var projectDetails = $('.details-project');
+        projectDetails.addClass('hide');
+        var projectDetailActive = null;
+        if(projectDetails.length){
+            projectDetailActive = projectDetails.first();
+            projectDetailActive.removeClass('hide');
+
+            var rows = [0];
+            projectsTable.rows( rows).select();
+        }
+    }
+
+    function initAddApiproject(){
+        var addApiprojectLink = $('<a href="#" class="icon-add-link">' +
+                '<i class="fa fa-plus-circle"></i>' +
+                '</a>');
+        $('#addapiproject').append(addApiprojectLink);
+
+        var initproto = false;
+
+        function addApiproject(apikey, api){
+            addApiprojectForm(collectionApiproject, newApiprojectLi, apikey, api);
+        }
+
+        function addApiprojectForm(collectionHolder, newLinkLi, apikeyValue, apiValue) {
+            // Get the data-prototype explained earlier
+            var prototype = collectionHolder.data('prototype');
+
+            if(!initproto){
+                var htmlProto = $(prototype);
+                var inputGroup = $(htmlProto.children()[0]);
+                inputGroup.attr('class', 'input-group gen-key');
+                inputGroup.attr('style', 'width: 96%;margin-bottom: 2px;')
+                inputGroup.append('<span class="input-group-btn"> <button class="btn btn-primary fa fa-rotate-left" type="button" onclick="generateKey(this)"></button> </span>');
+
+                var htmlAux = '<div></div>'
+                var aux = $(htmlAux);
+                aux.append(htmlProto);
+
+                prototype = aux.html();
+                collectionHolder.data('prototype', prototype);
+
+                initproto = true;
+            }
+
+            // get the new index
+            var index = collectionHolder.find('li').length - 1;
+
+            // Replace '__name__' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            var newForm = prototype.replace(/__name__/g, index);
+
+            // increase the index with one for the next item
+            collectionHolder.data('index', index + 1);
+
+            // Display the form in the page in an li, before the "Add a tag" link li
+            var newFormLi = $('<li class="col-xs-12  p-0 m-b-5 p-relative p-l-10"></li>').append(newForm);
+            newLinkLi.before(newFormLi);
+
+            var inputApiKey = newFormLi.find('input');
+            if(apikeyValue){
+                inputApiKey.val(apikeyValue);
+            }
+            if(apiValue){
+                var inputApi = newFormLi.find('select');
+                inputApi.val(apiValue);
+            }
+            inputApiKey.prop('disabled', true);
+
+            var temp = collectionApiproject.find('li').length - 2;
+            $('#frontendbundle_datproject_apisprojects_'+temp+'_api').chosen();
+            $('#frontendbundle_datproject_apisprojects_'+temp+'_api_chosen.chosen-container-single').width( '100%' );
+
+            // add a delete link to the new form
+            addApiprojectFormDeleteLink(newFormLi, index);
+            newFormLi.attr('indexForm', index+'');
+        }
+
+        function addApiprojectFormDeleteLink(mediaFormLi, index) {
+            index += 1;
+            var inde
+            /*if(index>=10)
+             inde = $('<h4 style="padding: 40px 9px 15px;">' + index + '</h4>');
+             else*/
+            inde = $('<h4>' + index + '</h4>');
+
+            var display = (index == 1) ? ('display: none') : ('');
+
+            var removeFormA = $('<a href="#" class="icon-minus-link z-index-1000" style="'+ display +'">' +
+                    '<i class="fa fa-minus-circle"></i>' +
+                    '</a>');
+            mediaFormLi.append(removeFormA);
+            mediaFormLi.append(inde);
+
+            removeFormA.on('click', function (e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // remove the li for the tag form
+                mediaFormLi.remove();
+                updateApiproject();
+            });
+        }
+
+        function clearApisprojects(){
+            collectionApiproject.find('li').each(function () {
+                var urlCmp = $(this);
+                if(!urlCmp.hasClass('flag')){
+                    urlCmp.remove();
+                }
+            });
+        }
+
+        function updateApiproject(){
+            collectionApiproject.find('li').each(function(index){
+                var mediaFormLi = $(this);
+                if(mediaFormLi.attr('indexForm')){
+                    var oldIndex = mediaFormLi.attr('indexForm');
+
+                    var divContainer = $(mediaFormLi.children()[0]);
+
+                    var label = divContainer.find('label');
+                    var input = divContainer.find('input');
+                    var select = divContainer.find('select');
+                    var h4 = mediaFormLi.find('h4');
+                    var newIndex = index+'';
+
+                    mediaFormLi.attr('indexForm', newIndex);
+                    divContainer.attr('id', divContainer.attr('id').replace(oldIndex, newIndex));
+                    label.attr('for', label.attr('for').replace(oldIndex, newIndex));
+                    input.attr('id', input.attr('id').replace(oldIndex, newIndex));
+                    input.attr('name', input.attr('name').replace(oldIndex, newIndex));
+                    select.attr('id', select.attr('id').replace(oldIndex, newIndex));
+                    select.attr('name', select.attr('name').replace(oldIndex, newIndex));
+                    h4.html(index+1+'');
+                }
+            });
+        }
+
+        var newApiprojectLi = $('<li class="flag"></li>');
+
+        // Get the ul that holds the collection of urls
+        var collectionApiproject = $('ul.apisprojects');
+
+        // add a delete url link to all of the existing tag form li elements
+        collectionApiproject.find('li').each(function () {
+            addApiprojectFormDeleteLink($(this));
+        });
+
+        // add the "add a url" anchor and li to the urls ul
+        collectionApiproject.append(newApiprojectLi);
+
+        // count the current form inputs we have (e.g. 2), use that as the new
+        // index when inserting a new item (e.g. 2)
+        collectionApiproject.data('index', collectionApiproject.find('li').length - 1);
+
+        addApiprojectLink.on('click', function (e) {
+            // prevent the link from creating a "#" on the URL
+            e.preventDefault();
+
+            // add a new tag form (see next code block)
+            addApiproject();
+            var temp = collectionApiproject.find('li').length - 2;
+            $('#frontendbundle_datproject_apisprojects_'+temp+'_key').focus();
+            /*$('frontendbundle_datproject_urls_'+temp+'_dir').rules( "add", {
+             required: false
+             });*/
+        });
+        addApiproject();
+        var temp = collectionApiproject.find('li').length - 2;
+        $('#frontendbundle_datproject_apisprojects_'+temp+'_api_chosen.chosen-container-single').width( '100%' );
+
+        return {
+            addApiproject : function(apikey, api){
+                addApiproject(apikey, api);
+            },
+            clearApisprojects:function(){
+                clearApisprojects();
+            }
+        }
+    }
+
+    function initAddUrl(){
+        var addUrlLink = $('<a href="#" class="icon-add-link">' +
+                '<i class="fa fa-plus-circle"></i>' +
+                '</a>');
+        $('#addurl').append(addUrlLink);
+
+        function addUrl(url){
+            addUrlForm(collectionUrl, newUrlLi, url);
+        }
+
+        function addUrlForm(collectionHolder, newLinkLi, urlValue) {
+            // Get the data-prototype explained earlier
+            var prototype = collectionHolder.data('prototype');
+
+            // get the new index
+            var index = collectionHolder.find('li').length - 1;
+
+            // Replace '__name__' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            var newForm = prototype.replace(/__name__/g, index);
+
+            // increase the index with one for the next item
+            collectionHolder.data('index', index + 1);
+
+            // Display the form in the page in an li, before the "Add a tag" link li
+            var newFormLi = $('<li class="col-xs-12 p-0 m-b-5 p-relative p-l-10"></li>').append(newForm);
+            newLinkLi.before(newFormLi);
+
+            if(urlValue){
+                var inputUrl = newFormLi.find('input');
+                inputUrl.val(urlValue);
+            }
+
+
+            // add a delete link to the new form
+            addUrlFormDeleteLink(newFormLi, index);
+            newFormLi.attr('indexForm', index+'');
+        }
+
+        function addUrlFormDeleteLink(mediaFormLi, index) {
+            index += 1;
+            var inde
+            /*if(index>=10)
+             inde = $('<h4 style="padding: 40px 9px 15px;">' + index + '</h4>');
+             else*/
+            inde = $('<h4>' + index + '</h4>');
+
+            var display = (index == 1) ? ('display: none') : ('');
+
+            var removeFormA = $('<a href="#" class="icon-minus-link z-index-1000" style="'+ display +'">' +
+                    '<i class="fa fa-minus-circle"></i>' +
+                    '</a>');
+            mediaFormLi.append(removeFormA);
+            mediaFormLi.append(inde);
+
+            removeFormA.on('click', function (e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // remove the li for the tag form
+                mediaFormLi.remove();
+                updateUrls();
+            });
+        }
+
+        function clearUrls(){
+            collectionUrl.find('li').each(function () {
+                var urlCmp = $(this);
+                if(!urlCmp.hasClass('flag')){
+                    urlCmp.remove();
+                }
+            });
+        }
+
+        function updateUrls(){
+            collectionUrl.find('li').each(function(index){
+                var mediaFormLi = $(this);
+                if(mediaFormLi.attr('indexForm')){
+                    var oldIndex = mediaFormLi.attr('indexForm');
+
+                    var divContainer = $(mediaFormLi.children()[0]);
+                    var label = divContainer.find('label');
+                    var input = divContainer.find('input');
+                    var h4 = mediaFormLi.find('h4');
+                    var newIndex = index+'';
+
+                    mediaFormLi.attr('indexForm', newIndex);
+                    divContainer.attr('id', divContainer.attr('id').replace(oldIndex, newIndex));
+                    label.attr('for', label.attr('for').replace(oldIndex, newIndex));
+                    input.attr('id', input.attr('id').replace(oldIndex, newIndex));
+                    input.attr('name', input.attr('name').replace(oldIndex, newIndex));
+                    h4.html(index+1+'');
+                }
+            });
+        }
+
+        var newUrlLi = $('<li class="flag"></li>');
+
+        // Get the ul that holds the collection of urls
+        var collectionUrl = $('ul.urls');
+
+        // add a delete url link to all of the existing tag form li elements
+        collectionUrl.find('li').each(function () {
+            addUrlFormDeleteLink($(this));
+        });
+
+        // add the "add a url" anchor and li to the urls ul
+        collectionUrl.append(newUrlLi);
+
+        // count the current form inputs we have (e.g. 2), use that as the new
+        // index when inserting a new item (e.g. 2)
+        collectionUrl.data('index', collectionUrl.find('li').length - 1);
+
+        addUrlLink.on('click', function (e) {
+            // prevent the link from creating a "#" on the URL
+            e.preventDefault();
+
+            // add a new tag form (see next code block)
+            addUrl();
+            var temp = collectionUrl.find('li').length - 2;
+            $('#frontendbundle_datproject_urls_'+temp+'_dir').focus();
+            /*$('frontendbundle_datproject_urls_'+temp+'_dir').rules( "add", {
+             required: false
+             });*/
+        });
+
+        addUrl();
+
+        return {
+            addUrl : function(url){
+                addUrl(url);
+            },
+            clearUrls:function(){
+                clearUrls();
+            }
+        }
+    }
+
+    function initConfirmDelete(){
+        var confirmLenguaje = $('#confirm-lenguaje-project');
+        $('.delete-project').on('click', function(){
+            var link = $(this);
+            $.confirm({
+                title: confirmLenguaje.data('title'),
+                content: confirmLenguaje.data('content'),
+                confirmButton: confirmLenguaje.data('confirmbutton'),
+                cancelButton: confirmLenguaje.data('cancelbutton'),
+                backgroundDismiss: false,
+                confirm: function(){
+                    HoldOn.open();
+                    $.post(link.data('href'),
+                            {},
+                            function (success) {
+                                HoldOn.close();
+                                if (success.success) {
+                                    updateTab('','',{});
+                                    //window.location.href=pathSuccess;
+                                }
+                                else {
+                                    hds.msg.show(3, 'Ha ocurrido un error');
+                                }
+                            }
+                    ).fail(function () {
+                                HoldOn.close();
+                                hds.msg.show(3, 'Ha ocurrido un error');
+                            });
+                },
+                cancel: function(){}
+            });
+        });
+    }
+
+    function initNewProject(){
+        $('.new-project').on('click', function(){
+            var link = $(this);
+            btnActionModal = link;
+
+            var title = $('#modal-new-project .modal-title');
+            title.html(title.data('title-new'));
+
+            managerApisprojects.clearApisprojects();
+            managerUrls.clearUrls();
+
+            managerApisprojects.addApiproject();
+            managerUrls.addUrl();
+
+            var modal = $('#modal-new-project');
+            modal.find('input.form-control').each(function(){
+                var input = $(this);
+                input.val('');
+            });
+            modal.find('textarea').each(function(){
+                var input = $(this);
+                input.val('');
+            });
+            modal.find('select').each(function(){
+                var input = $(this);
+                input.val('').chosen().trigger("chosen:updated");
+            });
+        });
+    }
+
+    function initEditProject(){
+        $('.edit-project').on('click', function(){
+            var link = $(this);
+            btnActionModal = link;
+
+            var title = $('#modal-new-project .modal-title');
+            title.html(title.data('title-edit'));
+
+            var id = 'project_id_data_' + link.data('idproject');
+            var data = JSON.parse($('#'+id).html());
+
+            var urls = 0;
+            var apiskey = 0;
+            for (var idData in data) {
+                if (data.hasOwnProperty(idData)) {
+                    if (idData.indexOf('apikey') != -1) {
+                        apiskey++;
+                    }
+                    else if (idData.indexOf('urls')  != -1) {
+                        urls++;
+                    }
+                }
+            }
+
+            managerApisprojects.clearApisprojects();
+            managerUrls.clearUrls();
+
+            for (var i = 0; i < urls; i++) {
+                managerUrls.addUrl();
+            }
+            for (var i = 0; i < apiskey; i++) {
+                managerApisprojects.addApiproject();
+            }
+
+            var modal = $('#modal-new-project');
+            modal.find('input.form-control').each(function(){
+                var input = $(this);
+                input.val(data[input.attr('name')]);
+            });
+            modal.find('textarea').each(function(){
+                var input = $(this);
+                input.val(data[input.attr('name')]);
+            });
+            modal.find('select').each(function(){
+                var input = $(this);
+                input.val(data[input.attr('name')]).chosen().trigger("chosen:updated");
+            });
+        });
+    }
+
+    function saveNewProject(){
+        var path = btnActionModal.data('action');
+        var pathSuccess = btnActionModal.data('action-success');
+
+        var data = {
+            'frontendbundle_datproject[_token]':$('#frontendbundle_datproject__token').val(),
+            'frontendbundle_datproject[name]' : $('#frontendbundle_datproject_name').val(),
+            'frontendbundle_datproject[applicationtype]':$('#frontendbundle_datproject_applicationtype').val(),
+            'frontendbundle_datproject[description]':$('#frontendbundle_datproject_description').val()
+        };
+
+        if(btnActionModal.hasClass('edit-project')){
+            data['id'] = btnActionModal.data('idproject');
+        }
+
+        var urlsComponents = $('.urls input');
+        urlsComponents.each(function(){
+            var url = $(this);
+            if(url != ''){
+                data[url.attr('name')] = url.val();
+            }
+        });
+
+        var apisprojects_keys = $('.apisprojects input.form-control');
+        apisprojects_keys.each(function(){
+
+            var apiproject_key = $(this);
+            if(apiproject_key != ''){
+                data[apiproject_key.attr('name')] = apiproject_key.val();
+
+                var idApi = apiproject_key.attr('id').replace('apikey', 'api');
+                var apiproject_api = $('#'+idApi);
+                data[apiproject_api.attr('name')] = apiproject_api.val();
+            }
+        });
+
+        HoldOn.open();
+        $.post(path,
+                data,
+                function (success) {
+                    HoldOn.close();
+                    if (success.success) {
+                        $('#modal-new-project').modal('hide');
+
+                        var ac = $('#main_project').data('action');
+                        updateTab(ac,'',{});
+                    }
+                    else {
+                        hds.msg.show(3, success.msg);
+                    }
+                }
+        ).fail(function () {
+                    HoldOn.close();
+                    hds.msg.show(3, 'Ha ocurrido un error');
+                });;
+    }
+
+    function generateKey(btn) {
+        var path = $('#form-apisprojects').attr('data-action');
+
+        var btn = $(btn);
+        var input = btn.parent().prev();
+        var idSelect = input.attr('id').replace('apikey', 'api');
+        var select = $('#'+idSelect);
+
+        var data = {
+            idApi : select.val()
+        };
+
+        HoldOn.open();
+        $.post(path,
+                data,
+                function (success) {
+                    HoldOn.close();
+                    if (success.success) {
+                        input.val(success.key);
+                    }
+                    else {
+                        hds.msg.show(3, 'Ha ocurrido un error');
+                    }
+                }
+        ).fail(function () {
+                    HoldOn.close();
+                    hds.msg.show(3, 'Ha ocurrido un error');
+                });
+    }
+</script>

@@ -1,0 +1,41 @@
+<div id="modal-new-{{ id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" style="display: none;">
+    <div class="modal-dialog" style="width: 30%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title" data-title-new="{{ 'Nuevo usuario' | trans }}" data-title-edit="{{ 'Editar usuario' | trans }}"></h4>
+            </div>
+            <div class="modal-body">
+                <div id="error-container-form-user" class="error-container hide"></div>
+                <form role="form" class="form-margin-top"  style="height: 250px" id="form-gest-user">
+                    <div class="form-group">
+                        {{ form_widget(form.username, { 'attr': {'placeholder': 'Nombre'|trans, 'title':'Nombre del usuario'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_widget(form.email, { 'attr': {'placeholder': 'Correo'|trans, 'title':'Correo electrónico del usuario'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'Contraseña'|trans, 'title':'Contraseña del usuario'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'Confirmación de contraseña'|trans, 'title':'Confirmación de Contraseña'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                    </div>
+                    <div class="form-group">
+                        <select data-placeholder="Choose a role..." id="role" class="chosen-select" multiple style="width:350px;" tabindex="4">
+                            {% for rol in roles %}
+                                <option value="{{ rol.name }}">{{ rol.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </form>
+                <div style="text-align: right">
+                    <button data-dismiss="modal" class="btn btn-default btn-modal-default" type="button">{{ 'Cancelar'|trans }}</button>
+                    <button class="btn btn-primary m-r-15" onclick="saveNewUser(false)" type="button">{{ 'Guardar'|trans }}</button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

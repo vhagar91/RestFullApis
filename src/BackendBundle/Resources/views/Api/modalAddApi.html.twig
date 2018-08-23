@@ -1,0 +1,77 @@
+<div id="modal-new-api" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" style="display: none;">
+    <div class="modal-dialog" style="width: 50%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title" data-title-new="{{ 'backend.title_add.api' | trans }}" data-title-edit="{{ 'backend.title_edit.api' | trans }}"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1"> {{ 'backend.title_tab_general'|trans }} </a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-2">{{ 'backend.title_tab_config_db.api'|trans }}</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        {{ form_widget(form._token) }}
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="error-container hide"></div>
+                            <form role="form" class="form-margin-top">
+                                <div class="form-group">
+                                    {{ form_widget(form.name, { 'attr': {'placeholder': 'backend.placeholder_name'|trans, 'title':'backend.title_name.api'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                                </div>
+                                <div class="form-group hide">
+                                    {{ form_widget(form.code, { 'attr': {'placeholder': 'backend.placeholder_cod.api'|trans, 'title':'backend.title_cod.api'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_widget(form.apitype, { 'attr': {'data-placeholder': 'backend.placeholder_api_type.api'|trans, 'title':'backend.title_api_type.api'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control chosen-select' }}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_widget(form.description, { 'attr': {'placeholder': 'backend.placeholder_description.api'|trans, 'title':'backend.title_description.api'|trans, 'data-toggle':'tooltip', 'data-container':'body' }}) }}
+                                </div>
+                                <div class="form-group">
+                                    <div class="checkbox i-checks">
+                                        <label>
+                                            {{ form_widget(form.status, { 'attr': {'title':'backend.title_status.api'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'i-checks', 'checked': 'checked'}}) }}<i></i> {{ 'backend.field_label_active.api'|trans }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="tab-2" class="tab-pane">
+                            <div class="error-container hide"></div>
+                            <form role="form" class="form-margin-top" style="height: 300px;">
+                                <div class="form-group">
+                                    {{ form_widget(form.class, { 'attr': {'placeholder': 'backend.placeholder_class'|trans, 'title':'backend.title_class.api'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_widget(form.db_host, { 'attr': {'placeholder': 'backend.placeholder_host.api' |trans, 'title':'backend.title_host.api'|trans, 'data-mask':'999.999.999.9999', 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_widget(form.db_port, { 'attr': {'placeholder': 'backend.placeholder_port.api'|trans, 'title':'backend.title_port.api'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_widget(form.driver, { 'attr': {'data-placeholder': 'backend.placeholder_driver.api'|trans, 'title':'backend.title_driver.api'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control chosen-select' }}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_widget(form.db_name, { 'attr': {'placeholder': 'backend.placeholder_dbname.api'|trans, 'title':'backend.title_dbname.api'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_widget(form.db_user, { 'attr': {'placeholder': 'backend.placeholder_dbuser.api'|trans, 'title':'backend.title_dbuser.api'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_widget(form.db_password, { 'attr': {'placeholder': 'backend.placeholder_psw.api'|trans, 'title':'backend.title_psw.api'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default btn-modal-default" type="button">{{ 'backend.btn_cancel'|trans }}</button>
+                <button class="btn btn-primary m-r-15" onclick="saveNewApi()" type="button">{{ 'backend.btn_save'|trans }}</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,58 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    access_decision_manager:
+        strategy: unanimous
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_FBUSER:       ROLE_USER
+        ROLE_ADMIN:       ROLE_FBUSER, ROLE_USER,
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+        access_token_user_provider:
+            id: access_token.user_provider
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+#        api:
+#            pattern: ^/[a-z]{2}/api
+#            stateless: true
+#            simple_preauth:
+#                authenticator: access_token.authenticator
+#            provider: access_token_user_provider
+        main:
+            remember_me:
+                key: %secret%
+                lifetime: 10000000
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                login_path:             user_login
+                check_path:             user_login_check
+                csrf_provider: form.csrf_provider
+            context:            application
+            logout:
+                path:  fos_user_security_logout
+                target:  /
+            anonymous:    true
+
+    access_control:
+
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/frontend, role: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }
+        - { path: ^/backend, role: ROLE_ADMIN }
+        - { path: ^/user, role: ROLE_ADMIN }
+        - { path: /admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /admin/, role: ROLE_ADMIN }
+        - { path: '^/[a-z]{2}/buy/card', role: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }

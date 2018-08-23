@@ -1,0 +1,37 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+    # You should uncomment this if you want use pdo_sqlite
+    # database_path: "%kernel.root_dir%/data.db3"
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsNotSoSecretChangeIt
+    fb_app_id: '965406193521123'
+    mycp_oauth2_client_id: '2_199hd8chz8jokkgcsoggk8c8ow8g00gc4gcgc8ck04g808o008'
+    mycp_oauth2_client_secret: '4xnnkujmlxwcks40ocgs4wks8gskk8s84o8k4cscc0w08880k4'
+    mycp_oauth2_server_base_url: 'http://localhost/mycasaparticular/web/app_dev.php'
+    mycp_oauth2_redirect_url: 'http://proceso.dev/app_dev.php/en/register/mycp'
+
+    cbs.dir.web: %kernel.root_dir%/../web
+    ownership.dir.photos: /uploads/medias/ownerships/
+    ownership.dir.photos.originals: %kernel.root_dir%/../web/uploads/medias/ownerships/originals/
+    watermark.mycp.full.path: %kernel.root_dir%/../web/uploads/medias/watermark/mycp.png
+    ownership.height.photos: 480
+    bussiness.dir.photos: /uploads/medias/bussiness/
+    bussiness.dir.photos.originals: %kernel.root_dir%/../web/uploads/medias/bussiness/originals/
+    watermark.mypa.full.path: %kernel.root_dir%/../web/uploads/medias/watermark/mypa.png
+    bussiness.height.photos: 480
+
+    notification_service_url: "http://sms1.lvps92-51-151-239.dedicated.hosteurope.de"
+    notification_service_api_key: "d806da61a499037f1b7b6321ff8c5fbb"

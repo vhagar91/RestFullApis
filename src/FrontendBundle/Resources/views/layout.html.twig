@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}Home{% endblock %} | CBS</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/frontend/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/frontend/css/animate.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/frontend/font-awesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/frontend/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/frontend/js/Footer/css/component.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/frontend/css/customfrontend.css') }}">
+        <!--Holdon-->
+        <link rel="stylesheet" href="{{ asset('bundles/frontend/css/plugins/holdon/HoldOn.min.css') }}">
+        <!--Tree-->
+        <link rel="stylesheet" href="{{ asset('bundles/frontend/css/plugins/jsTree/style.min.css') }}">
+
+    {% endblock %}
+
+
+</head>
+<body id="page-top" class="gray-bg">
+
+{% block navbar %}
+    {{ include('FrontendBundle:layout:navbar.html.twig') }}
+{% endblock %}
+{% block carousel %}
+    {{ include('FrontendBundle:layout:carousel.html.twig') }}
+{% endblock %}
+{% for message in app.session.flashbag.get('message_ok') %}
+    <div class="alert alert-info">{{ message }}</div>
+{% endfor %}
+{% for message in app.session.flashbag.get('message_error') %}
+    <div class="alert alert-error">{{ message }}</div>
+{% endfor %}
+{% block body %}
+{% endblock %}
+{% block footer %}
+    {{ include('FrontendBundle:layout:footer.html.twig') }}
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('bundles/frontend/js/jquery-2.1.1.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/plugins/pace/pace.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/plugins/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/plugins/jquery-validation-1.14.0/dist/jquery.validate.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/Footer/js/modernizr.custom.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/Footer/js/boxlayout.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/custom.js') }}"></script>
+    <!--Holdon-->
+    <script src="{{ asset('bundles/frontend/js/plugins/holdon/HoldOn.min.js') }}"></script>
+    <!--Shortcut-->
+    <script src="{{ asset('bundles/frontend/js/shortcut.js') }}"></script>
+    <!--Tree-->
+    <script src="{{ asset('bundles/frontend/js/plugins/jsTree/jstree.min.js') }}"></script>
+
+    <script>
+        $(function () {
+            Boxlayout.init();
+        });
+    </script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('body').scrollspy({
+                target: '.navbar-fixed-top',
+                offset: 80
+            });
+
+            // Page scrolling feature
+            $('a.page-scroll').bind('click', function (event) {
+                var link = $(this);
+                if (link.attr('href') && link.attr('href').indexOf('/') == -1 && $(link.attr('href')).offset) {
+                    $('html, body').stop().animate({
+                        scrollTop: $(link.attr('href')).offset().top - 50
+                    }, 500);
+
+                    event.preventDefault();
+                }
+            });
+        });
+
+        var cbpAnimatedHeader = (function () {
+            var docElem = document.documentElement,
+                    header = document.querySelector('.navbar-default'),
+                    didScroll = false,
+                    changeHeaderOn = 100;
+
+            function init() {
+                window.addEventListener('scroll', function (event) {
+                    if (!didScroll) {
+                        didScroll = true;
+                        setTimeout(scrollPage, 250);
+                    }
+                }, false);
+            }
+
+            function scrollPage() {
+                var sy = scrollY();
+                if (sy >= changeHeaderOn) {
+                    $(header).addClass('navbar-scroll');
+                    $('#logo1').addClass('hide');
+                    $('#logo2').removeClass('hide');
+                    /*     $('#home-link-1').removeClass('hide');
+                     $('#home-link-2').removeClass('hide');
+                     $('#home-link-3').removeClass('hide');
+                     $('#home-link-4').removeClass('hide');
+                     $('#home-link-5').removeClass('hide');*/
+
+                }
+                else {
+                    $(header).removeClass('navbar-scroll');
+                    $('#logo2').addClass('hide');
+                    $('#logo1').removeClass('hide');
+                    /*     $('#home-link-1').addClass('hide');
+                     $('#home-link-2').addClass('hide');
+                     $('#home-link-3').addClass('hide');
+                     $('#home-link-4').addClass('hide');
+                     $('#home-link-5').addClass('hide');*/
+                }
+                didScroll = false;
+            }
+
+            function scrollY() {
+                return window.pageYOffset || docElem.scrollTop;
+            }
+
+            init();
+
+        })();
+
+        // Activate WOW.js plugin for animation on scrol
+        new WOW().init();
+
+    </script>
+
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,18 @@
+<div class="col-md-offset-0 col-sm-offset-4 col-md-9 col-sm-5 col-xs-12 p-b-10">
+    <div class="side-by-side clearfix no-trigger select-footer">
+        <div class="side-by-side clearfix">
+            {% set lang = ['en','es','de'] %}
+            <select id="changeLocale" class="chosen-select-deselect form-control" onchange="window.location = this.value">
+                {% for language in lang %}
+                    {% set active = ""  %}
+                    {% set url = app.request.get('_route')  %}
+                    {% set url_params = app.request.get('_route_params')  %}
+                    {% if app.request.locale == language  %}
+                        {% set active = 'selected=selected' %}
+                    {% endif %}
+                    <option {{ active }} value="{{ url(url, url_params|merge({'_locale':language})) }}">{{ language }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</div>

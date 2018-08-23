@@ -1,0 +1,11 @@
+services:
+#    user.example:
+#        class: UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    access_token.user_provider:
+        class: UserBundle\Security\AccessTokenUserProvider
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
+    access_token.authenticator:
+        class: UserBundle\Security\AccessTokenAuthenticator
+#        public: false

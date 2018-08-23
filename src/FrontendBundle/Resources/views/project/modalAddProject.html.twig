@@ -1,0 +1,71 @@
+<div id="modal-new-project" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" style="display: none;">
+    <div class="modal-dialog" style="width: 50%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 id="myModalLabel" class="modal-title" data-title-new="{{ 'frontendbundle.modal_title.addproject' | trans }}" data-title-edit="{{ 'frontendbundle.title.edit_project' | trans }}"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1"> {{ 'frontendbundle.tab.general'|trans }} </a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-2">{{ 'frontendbundle.tab.urls'|trans }}</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-3">{{ 'frontendbundle.tab.apis_keys'|trans }}</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        {{ form_widget(form._token) }}
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="error-container hide"></div>
+                            <form role="form" class="form-margin-top">
+                                <div class="form-group">
+                                    {{ form_widget(form.name, { 'attr': {'placeholder': 'frontendbundle.field_placeholder.name'|trans, 'title':'frontendbundle.field_tooltip.name'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_widget(form.applicationtype, { 'attr': {'data-placeholder': 'frontendbundle.field_placeholder.aplicationtype'|trans, 'title':'frontendbundle.field_tooltip.aplicationtype'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control chosen-select' }}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_widget(form.description, { 'attr': {'placeholder': 'frontendbundle.column_name.description'|trans, 'title':'frontendbundle.tooltip.description'|trans, 'data-toggle':'tooltip', 'data-container':'body' }}) }}
+                                </div>
+                            </form>
+                        </div>
+                        <div id="tab-2" class="tab-pane">
+                            <div class="error-container hide"></div>
+                            <form role="form" class="form-margin-top">{# URLS #}
+                                <ul class="urls s-p" data-prototype="{{ form_widget(form.urls.vars.prototype)|e }}">
+                                    {# iterate over each existing url and render fields #}
+                                    {% for url in form.urls %}
+                                        <li class="col-xs-10 col-sm-12 col-md-12 p-0 m-b-5">
+                                            {{ form_widget(url.dir) }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <div id="addurl" class="form-group"></div>
+                            </form>
+                        </div>
+                        <div id="tab-3" class="tab-pane">
+                            <div class="error-container hide"></div>
+                            <form id="form-apisprojects" role="form" class="form-margin-top" data-action="{{ path('generate_apikey') }}">{# APIS #}
+                                <ul class="apisprojects s-p" data-prototype="{{ form_widget(form.apisprojects.vars.prototype)|e }}">
+                                    {# iterate over each existing apiproject and render fields #}
+                                    {% for apiproject in form.apisprojects %}
+                                        <li class="col-xs-10 col-sm-12 col-md-12 p-0 m-b-5">
+                                            {{ form_widget(apiproject.api) }}
+                                            {{ form_widget(apiproject.apikey) }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <div id="addapiproject" class="form-group"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default btn-modal-default" type="button">{{ 'frontendbundle.buttoncancel.name'|trans }}</button>
+                <button class="btn btn-primary m-r-15" onclick="saveNewProject()" type="button">{{ 'frontendbundle.buttonsave.name'|trans }}</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

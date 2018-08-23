@@ -1,0 +1,34 @@
+$nights = $mycpUtils->nights( $fromTimestamp, $toTimestamp );
+		$toDate->modify( '-1 days' );
+
+		$ownership                  = $this->getOwnership( $ownId, $currency );
+		$ownership['room_recharge'] = MyCpUtils::CONFIG_TRIPLE_ROOM_CHARGE * $ownership['cuc_change'];
+		$bookingModality            = $ownership['modality'];
+		$ownership['service_fee']   = $this->getServiceFeeCurrent();
+		$ownership['nights']        = $nights;
+
+$this->getRoomById( $rid , $change);
+
+
+        $fromDate = \DateTime::createFromFormat( 'Y-m-d', $from )->setTime( 0, 0, 0 );
+		$toDate   = \DateTime::createFromFormat( 'Y-m-d', $to )->setTime( 0, 0, 0 );
+		$fromTimestamp = $fromDate->getTimestamp();
+		$toTimestamp   = $toDate->getTimestamp();
+		$mycpUtils = $this->getContainer()->get( 'mycp.utils' );
+		$nights = $mycpUtils->nights( $fromTimestamp, $toTimestamp );
+
+
+
+((TextView) findViewById(R.id.book_total_price)).setText(tc + ViewUtils.getRoundedPrice(totalPrice));
+        ((TextView) findViewById(R.id.book_online_prepayment)).setText(tc + ViewUtils.getRoundedPrice(onlinePrepayment));
+        ((TextView) findViewById(R.id.book_pay_in_accommodation)).setText(tc + ViewUtils.getRoundedPrice(payInAccommodation));
+        ((TextView) findViewById(R.id.lodging_price)).setText(tc + ViewUtils.getRoundedPrice(lodgingPrice));
+        ((TextView) findViewById(R.id.tourist_service)).setText(tc + ViewUtils.getRoundedPrice(tourist_service));
+        ((TextView) findViewById(R.id.fixed_fee)).setText(tc + ViewUtils.getRoundedPrice(fixedFee));
+        ((TextView) findViewById(R.id.total_price)).setText(tc + ViewUtils.getRoundedPrice(totalPrice));
+        ((TextView) findViewById(R.id.online_prepayment)).setText(tc + ViewUtils.getRoundedPrice(onlinePrepayment));
+        ((TextView) findViewById(R.id.pay_in_accommodation)).setText(tc + ViewUtils.getRoundedPrice(payInAccommodation));
+        ((TextView) findViewById(R.id.pay_in_accommodation_cuc)).setText(" CUC " + ViewUtils.getRoundedPrice(payInAccommodationCuc));
+
+
+        los datos del ownershipreservations

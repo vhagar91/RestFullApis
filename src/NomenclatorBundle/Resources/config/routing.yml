@@ -1,0 +1,3 @@
+nomenclator_routes:
+    resource: "@NomenclatorBundle/Controller/"
+    type:     annotation

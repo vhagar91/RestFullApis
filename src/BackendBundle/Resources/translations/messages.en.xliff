@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2015-11-12T19:36:36Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="7fda3970598ef60b0b151b2274290dd18559cf83" resname="Descripción">
+        <jms:reference-file line="16">views/Nomencladores/modalAddNom.html.twig</jms:reference-file>
+        <source>Descripción</source>
+        <target state="new">Descripción</target>
+      </trans-unit>
+      <trans-unit id="12c863cc05ff5169cf910dfef9c87bdad3344473" resname="backend.btn_add.api">
+        <jms:reference-file line="32">views/Api/api.html.twig</jms:reference-file>
+        <source>backend.btn_add.api</source>
+        <target state="new">Api nueva</target>
+      </trans-unit>
+      <trans-unit id="658f951c27e859232f82906798e9b061168419db" resname="backend.btn_add.nomencladores">
+        <jms:reference-file line="28">views/Nomencladores/nomencladores.html.twig</jms:reference-file>
+        <source>backend.btn_add.nomencladores</source>
+        <target state="new">Adicionar</target>
+      </trans-unit>
+      <trans-unit id="e3fee5451451a5a97a5682998e6dd564ed60a538" resname="backend.btn_add.project">
+        <jms:reference-file line="32">views/Project/project.html.twig</jms:reference-file>
+        <source>backend.btn_add.project</source>
+        <target state="new">Proyecto nuevo</target>
+      </trans-unit>
+      <trans-unit id="db0f9d49748f86401d1a6dc11c226ef09e5ca561" resname="backend.btn_cancel">
+        <jms:reference-file line="67">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <jms:reference-file line="20">views/Nomencladores/modalAddNom.html.twig</jms:reference-file>
+        <jms:reference-file line="61">views/Project/modalAddProject.html.twig</jms:reference-file>
+        <source>backend.btn_cancel</source>
+        <target state="new">Cancelar</target>
+      </trans-unit>
+      <trans-unit id="a293c8e3448cdcd6ad0bdb30af64102b1b51de29" resname="backend.btn_no">
+        <jms:reference-file line="5">views/Api/api.html.twig</jms:reference-file>
+        <jms:reference-file line="5">views/Nomencladores/nomencladores.html.twig</jms:reference-file>
+        <jms:reference-file line="5">views/Project/project.html.twig</jms:reference-file>
+        <source>backend.btn_no</source>
+        <target state="new">NO</target>
+      </trans-unit>
+      <trans-unit id="78c64ac1e9e822914b0c4fe886fd6bf33d39a9ab" resname="backend.btn_save">
+        <jms:reference-file line="68">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <jms:reference-file line="21">views/Nomencladores/modalAddNom.html.twig</jms:reference-file>
+        <source>backend.btn_save</source>
+        <target state="new">Guardar</target>
+      </trans-unit>
+      <trans-unit id="24eb331cede7e326e6f029d0f04921d217a06707" resname="backend.btn_yes">
+        <jms:reference-file line="4">views/Api/api.html.twig</jms:reference-file>
+        <jms:reference-file line="4">views/Nomencladores/nomencladores.html.twig</jms:reference-file>
+        <jms:reference-file line="4">views/Project/project.html.twig</jms:reference-file>
+        <source>backend.btn_yes</source>
+        <target state="new">SI</target>
+      </trans-unit>
+      <trans-unit id="b47f663d1691b53e5ad950be9aa89fd4503f7c7c" resname="backend.column_action">
+        <jms:reference-file line="45">views/Api/api.html.twig</jms:reference-file>
+        <jms:reference-file line="40">views/Nomencladores/nomencladores.html.twig</jms:reference-file>
+        <jms:reference-file line="45">views/Project/project.html.twig</jms:reference-file>
+        <source>backend.column_action</source>
+        <target state="new">Acción</target>
+      </trans-unit>
+      <trans-unit id="97b013a24d71d3dcfe6dda2d4528bb5a9ee6412b" resname="backend.column_api">
+        <jms:reference-file line="42">views/Api/api.html.twig</jms:reference-file>
+        <source>backend.column_api</source>
+        <target state="new">Api</target>
+      </trans-unit>
+      <trans-unit id="c2ec26fb9a6c39cf09b3e7efdcf78c24461826db" resname="backend.column_aplitype.project">
+        <jms:reference-file line="44">views/Project/project.html.twig</jms:reference-file>
+        <source>backend.column_aplitype.project</source>
+        <target state="new">Tipo de Aplicación</target>
+      </trans-unit>
+      <trans-unit id="4a46d1dc26f0285215e7c1c3d6d1daf27061bb1c" resname="backend.column_denom.nom">
+        <jms:reference-file line="38">views/Nomencladores/nomencladores.html.twig</jms:reference-file>
+        <source>backend.column_denom.nom</source>
+        <target state="new">Denominación</target>
+      </trans-unit>
+      <trans-unit id="14e32d3872821fe09a2971ef37f6745e7ec7f056" resname="backend.column_description">
+        <jms:reference-file line="44">views/Api/api.html.twig</jms:reference-file>
+        <jms:reference-file line="39">views/Nomencladores/nomencladores.html.twig</jms:reference-file>
+        <jms:reference-file line="43">views/Project/project.html.twig</jms:reference-file>
+        <source>backend.column_description</source>
+        <target state="new">Descripción</target>
+      </trans-unit>
+      <trans-unit id="c8589bd128ad01887e33d0077ab35eba7fd8f75d" resname="backend.column_id">
+        <jms:reference-file line="41">views/Api/api.html.twig</jms:reference-file>
+        <jms:reference-file line="37">views/Nomencladores/nomencladores.html.twig</jms:reference-file>
+        <jms:reference-file line="41">views/Project/project.html.twig</jms:reference-file>
+        <source>backend.column_id</source>
+        <target state="new">Id</target>
+      </trans-unit>
+      <trans-unit id="a6eed2722a5b32c94cb7f882660eff118f87757a" resname="backend.column_project.project">
+        <jms:reference-file line="42">views/Project/project.html.twig</jms:reference-file>
+        <source>backend.column_project.project</source>
+        <target state="new">Proyecto</target>
+      </trans-unit>
+      <trans-unit id="73730501a4eff44c78e828a1022485b0a203fe24" resname="backend.column_type.api">
+        <jms:reference-file line="43">views/Api/api.html.twig</jms:reference-file>
+        <source>backend.column_type.api</source>
+        <target state="new">Tipo</target>
+      </trans-unit>
+      <trans-unit id="031ce9c84739599b49154c4ed490a1aa361700ad" resname="backend.content_delete_modal.api">
+        <jms:reference-file line="3">views/Api/api.html.twig</jms:reference-file>
+        <source>backend.content_delete_modal.api</source>
+        <target state="new">Desea eliminar esta api.</target>
+      </trans-unit>
+      <trans-unit id="30061fba7b07741e0f61ae34ecb5bee93c465cce" resname="backend.content_delete_modal.nom">
+        <jms:reference-file line="3">views/Nomencladores/nomencladores.html.twig</jms:reference-file>
+        <source>backend.content_delete_modal.nom</source>
+        <target state="new">Desea eliminar este nomenclador.</target>
+      </trans-unit>
+      <trans-unit id="4f748ad80db41a304eca7098ac7f289f107c52f7" resname="backend.content_delete_modal.project">
+        <jms:reference-file line="3">views/Project/project.html.twig</jms:reference-file>
+        <source>backend.content_delete_modal.project</source>
+        <target state="new">Desea eliminar este proyecto.</target>
+      </trans-unit>
+      <trans-unit id="602404943b63296ca6c3dee610655d65da312928" resname="backend.field_label_active.api">
+        <jms:reference-file line="34">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.field_label_active.api</source>
+        <target state="new">Activa</target>
+      </trans-unit>
+      <trans-unit id="f0315d37f77898edf0961d1bda05c45510f88448" resname="backend.field_name.tooltip">
+        <jms:reference-file line="13">views/Nomencladores/modalAddNom.html.twig</jms:reference-file>
+        <source>backend.field_name.tooltip</source>
+        <target state="new">Nombre</target>
+      </trans-unit>
+      <trans-unit id="54eec39eab4a9aa94bd56e8fbd7004e7f1a4f69d" resname="backend.placeholder_api_type.api">
+        <jms:reference-file line="26">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.placeholder_api_type.api</source>
+        <target state="new">Tipo de api</target>
+      </trans-unit>
+      <trans-unit id="b948869821c50b598fdd032f4f1f593434921988" resname="backend.placeholder_aplitype.project">
+        <jms:reference-file line="23">views/Project/modalAddProject.html.twig</jms:reference-file>
+        <source>backend.placeholder_aplitype.project</source>
+        <target state="new">Tipo de aplicación</target>
+      </trans-unit>
+      <trans-unit id="8f67001f76aec2ceb6a3525a5b611545a5a15b1d" resname="backend.placeholder_cod.api">
+        <jms:reference-file line="23">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.placeholder_cod.api</source>
+        <target state="new">Codigo del api</target>
+      </trans-unit>
+      <trans-unit id="a6328c98d6ebe68e90a303de1052f0755eba2f4a" resname="backend.placeholder_dbname.api">
+        <jms:reference-file line="53">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.placeholder_dbname.api</source>
+        <target state="new">Nombre BD</target>
+      </trans-unit>
+      <trans-unit id="3df5448cb221b44ed4699cf5de88662ba56b6f58" resname="backend.placeholder_dbuser.api">
+        <jms:reference-file line="56">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.placeholder_dbuser.api</source>
+        <target state="new">Usuario</target>
+      </trans-unit>
+      <trans-unit id="f1dc23109cd55a444b8590ef3cb9ff33e3a31105" resname="backend.placeholder_description">
+        <jms:reference-file line="16">views/Nomencladores/modalAddNom.html.twig</jms:reference-file>
+        <jms:reference-file line="26">views/Project/modalAddProject.html.twig</jms:reference-file>
+        <source>backend.placeholder_description</source>
+        <target state="new">Descripción</target>
+      </trans-unit>
+      <trans-unit id="e3a92debe1c4dc67b6ed3d2da7a8077f9b623c9a" resname="backend.placeholder_description.api">
+        <jms:reference-file line="29">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.placeholder_description.api</source>
+        <target state="new">Descripción</target>
+      </trans-unit>
+      <trans-unit id="05942562a835b0bde7bea2bf7ca89284c79c9fbd" resname="backend.placeholder_driver.api">
+        <jms:reference-file line="50">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.placeholder_driver.api</source>
+        <target state="new">Driver</target>
+      </trans-unit>
+      <trans-unit id="97bab64c5c7b01bee3d3f3bc8619c8a120013340" resname="backend.placeholder_host.api">
+        <jms:reference-file line="44">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.placeholder_host.api</source>
+        <target state="new">Host</target>
+      </trans-unit>
+      <trans-unit id="d207e7a0675828cf811b62b40f9d014fa57f16c6" resname="backend.placeholder_name">
+        <jms:reference-file line="20">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <jms:reference-file line="13">views/Nomencladores/modalAddNom.html.twig</jms:reference-file>
+        <jms:reference-file line="20">views/Project/modalAddProject.html.twig</jms:reference-file>
+        <source>backend.placeholder_name</source>
+        <target state="new">Nombre</target>
+      </trans-unit>
+      <trans-unit id="a040cd9e765dc15590f75ed8ddcda9b7d6812a6f" resname="backend.placeholder_port.api">
+        <jms:reference-file line="47">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.placeholder_port.api</source>
+        <target state="new">Puerto</target>
+      </trans-unit>
+      <trans-unit id="ae95228bed68b5d2251f6550b2f33e9aa084ed51" resname="backend.placeholder_psw.api">
+        <jms:reference-file line="59">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.placeholder_psw.api</source>
+        <target state="new">Contraseña</target>
+      </trans-unit>
+      <trans-unit id="e2ef4d42599fb5663c16e1d0fd7e57d654dcf883" resname="backend.title_add.api">
+        <jms:reference-file line="6">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.title_add.api</source>
+        <target state="new">Nueva Api</target>
+      </trans-unit>
+      <trans-unit id="a3cd064f19cb3434cccd74d076b458161f41d54f" resname="backend.title_add.nom">
+        <jms:reference-file line="6">views/Nomencladores/modalAddNom.html.twig</jms:reference-file>
+        <source>backend.title_add.nom</source>
+        <target state="new">Nuevo Nomenclador</target>
+      </trans-unit>
+      <trans-unit id="263418ed003ac6589ebf461a71cb43351ecb8b21" resname="backend.title_add.project">
+        <jms:reference-file line="6">views/Project/modalAddProject.html.twig</jms:reference-file>
+        <source>backend.title_add.project</source>
+        <target state="new">Nuevo proyecto</target>
+      </trans-unit>
+      <trans-unit id="1d623bd5f1187068fcee1bd455adec63fce60899" resname="backend.title_api_type.api">
+        <jms:reference-file line="26">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <jms:reference-file line="23">views/Project/modalAddProject.html.twig</jms:reference-file>
+        <source>backend.title_api_type.api</source>
+        <target state="new">Tipo de api para el proyecto</target>
+      </trans-unit>
+      <trans-unit id="d0660ce3e7df2075d08f8a71a4cbf7d2766c55db" resname="backend.title_cod.api">
+        <jms:reference-file line="23">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.title_cod.api</source>
+        <target state="new">backend.title_cod.api</target>
+      </trans-unit>
+      <trans-unit id="5e67c0e26ba467e5d753f31fcec39702253a38d0" resname="backend.title_dbname.api">
+        <jms:reference-file line="53">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.title_dbname.api</source>
+        <target state="new">Nombre de la Base de Datos</target>
+      </trans-unit>
+      <trans-unit id="ddc6e26064a0a842cd6fcf64ab818493d03a1e95" resname="backend.title_dbuser.api">
+        <jms:reference-file line="56">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.title_dbuser.api</source>
+        <target state="new">Usuario de acceso</target>
+      </trans-unit>
+      <trans-unit id="2d6aefb6e27af522e0bf3797785eec3ccc45d3aa" resname="backend.title_description.api">
+        <jms:reference-file line="29">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.title_description.api</source>
+        <target state="new">Descripción del api</target>
+      </trans-unit>
+      <trans-unit id="c02fde0c3f515f6d7fb71cae7152f556c3899bbf" resname="backend.title_description.project">
+        <jms:reference-file line="26">views/Project/modalAddProject.html.twig</jms:reference-file>
+        <source>backend.title_description.project</source>
+        <target state="new">Descripción del proyecto</target>
+      </trans-unit>
+      <trans-unit id="939f87a526c2ad088fa64a6faf5f9fe3bb42fb12" resname="backend.title_driver.api">
+        <jms:reference-file line="50">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.title_driver.api</source>
+        <target state="new">Driver para la conexión</target>
+      </trans-unit>
+      <trans-unit id="3a95a9c4057960b087131353f2634d91d9ed66f6" resname="backend.title_edit.api">
+        <jms:reference-file line="6">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.title_edit.api</source>
+        <target state="new">Editar Api</target>
+      </trans-unit>
+      <trans-unit id="437c94c8a575ad1a59af964a09b65c04534e1213" resname="backend.title_edit.nom">
+        <jms:reference-file line="6">views/Nomencladores/modalAddNom.html.twig</jms:reference-file>
+        <source>backend.title_edit.nom</source>
+        <target state="new">Editar Nomenclador</target>
+      </trans-unit>
+      <trans-unit id="0f534efd87e93122c2af0a1aa6886b34e85815a6" resname="backend.title_edit.project">
+        <jms:reference-file line="6">views/Project/modalAddProject.html.twig</jms:reference-file>
+        <source>backend.title_edit.project</source>
+        <target state="new">Editar proyecto</target>
+      </trans-unit>
+      <trans-unit id="df5e5821fc9c2921f438fb2b8d27976f3a50b6fc" resname="backend.title_grid.api">
+        <jms:reference-file line="15">views/Api/api.html.twig</jms:reference-file>
+        <source>backend.title_grid.api</source>
+        <target state="new">Listado de apis</target>
+      </trans-unit>
+      <trans-unit id="462b1a97260294ff4fd32050951276dd1017b08f" resname="backend.title_grid_nom">
+        <jms:reference-file line="14">views/Nomencladores/nomencladores.html.twig</jms:reference-file>
+        <source>backend.title_grid_nom</source>
+        <target state="new">Listado</target>
+      </trans-unit>
+      <trans-unit id="04f8c61e9759c5af791e092ca9e69d7cbc0cd8ae" resname="backend.title_grid_project">
+        <jms:reference-file line="15">views/Project/project.html.twig</jms:reference-file>
+        <source>backend.title_grid_project</source>
+        <target state="new">Mis proyectos</target>
+      </trans-unit>
+      <trans-unit id="1cca09de218c51cea114112665b99a0b66c2064b" resname="backend.title_host.api">
+        <jms:reference-file line="44">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.title_host.api</source>
+        <target state="new">Host de la base de datos</target>
+      </trans-unit>
+      <trans-unit id="356ae36055bd77d44e9f6287dabdbe93e2c2596a" resname="backend.title_modal_delete">
+        <jms:reference-file line="2">views/Api/api.html.twig</jms:reference-file>
+        <jms:reference-file line="2">views/Nomencladores/nomencladores.html.twig</jms:reference-file>
+        <jms:reference-file line="2">views/Project/project.html.twig</jms:reference-file>
+        <source>backend.title_modal_delete</source>
+        <target state="new">Eliminar</target>
+      </trans-unit>
+      <trans-unit id="d033eba3f7a367717d2cb28d2f6fa15e104d71be" resname="backend.title_name.api">
+        <jms:reference-file line="20">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.title_name.api</source>
+        <target state="new">Nombre del api</target>
+      </trans-unit>
+      <trans-unit id="f876f2f1ecda48cefbe01cd2a9eae219764eddce" resname="backend.title_name.project">
+        <jms:reference-file line="20">views/Project/modalAddProject.html.twig</jms:reference-file>
+        <source>backend.title_name.project</source>
+        <target state="new">Nombre del proyecto</target>
+      </trans-unit>
+      <trans-unit id="bc3c76ce598a56f7a2974a9c2d298d7bc855a98d" resname="backend.title_port.api">
+        <jms:reference-file line="47">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.title_port.api</source>
+        <target state="new">Puerto de conexión</target>
+      </trans-unit>
+      <trans-unit id="e82635c6da1a30bc35bc0235681b3af64cb66ac2" resname="backend.title_psw.api">
+        <jms:reference-file line="59">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.title_psw.api</source>
+        <target state="new">Contraseña de acceso</target>
+      </trans-unit>
+      <trans-unit id="64acc438f84b251ea5a148c57c5566a352ecd189" resname="backend.title_status.api">
+        <jms:reference-file line="34">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.title_status.api</source>
+        <target state="new">Estado del api (Activada/Desactivada)</target>
+      </trans-unit>
+      <trans-unit id="0e134b6963ba7a0af99620c94078712d316c4f56" resname="backend.title_tab3_add.api">
+        <jms:reference-file line="13">views/Project/modalAddProject.html.twig</jms:reference-file>
+        <source>backend.title_tab3_add.api</source>
+        <target state="new">Apis an Key</target>
+      </trans-unit>
+      <trans-unit id="c8e2bd7d1bf6a83d15ba9dfbe2e746d675aeb994" resname="backend.title_tab_config_db.api">
+        <jms:reference-file line="12">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <source>backend.title_tab_config_db.api</source>
+        <target state="new">Configuración de la conexión</target>
+      </trans-unit>
+      <trans-unit id="91c2a404aa4c298dac396ffb334bd2ae889d47d8" resname="backend.title_tab_general">
+        <jms:reference-file line="11">views/Api/modalAddApi.html.twig</jms:reference-file>
+        <jms:reference-file line="11">views/Project/modalAddProject.html.twig</jms:reference-file>
+        <source>backend.title_tab_general</source>
+        <target state="new">Generales</target>
+      </trans-unit>
+      <trans-unit id="cdfcbc9b2007c1f7c21585f5aa8e3cfdbc848976" resname="backend.title_tab_url.project">
+        <jms:reference-file line="12">views/Project/modalAddProject.html.twig</jms:reference-file>
+        <source>backend.title_tab_url.project</source>
+        <target state="new">Urls</target>
+      </trans-unit>
+      <trans-unit id="d207e7a0675828cf811b62b40f9d014fa57h16c6" resname="backend.placeholder_class">
+                    <source>backend.placeholder_class</source>
+                    <target state="new">Clase</target>
+                  </trans-unit>
+            <trans-unit id="d207e7a0675828cf811b62b40f9d013fa57h16c6" resname="backend.title_class.api">
+                          <source>backend.title_class.api</source>
+                          <target state="new">Clase que implementa</target>
+                        </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,28 @@
+#rest_homepage:
+#    path:     /hello/{name}
+#    defaults: { _controller: RestBundle:Default:index }
+
+hds_rest_v1:
+    type: rest
+    prefix: /v1
+    resource: "RestBundle\Controller\McprestController"
+    name_prefix:  api_ # naming collision
+    options: { i18n: false }
+mycp_app_rest_v1:
+    type: rest
+    prefix: /mcp_v1
+    resource: "RestBundle\Controller\McpAppController"
+    name_prefix:  api_ # naming collision
+    options: { i18n: false }
+mycasabackend_rest_v1:
+    type: rest
+    prefix: /v1
+    resource: "RestBundle\Controller\BackendRestController"
+    name_prefix:  api_ # naming collision
+    options: { i18n: false }
+mypa_rest_v1:
+    type: rest
+    prefix: /mypaladar
+    resource: "RestBundle\Controller\MpaRestController"
+    name_prefix:  api_ # naming collision
+    options: { i18n: false }

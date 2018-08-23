@@ -1,0 +1,109 @@
+{% extends 'FrontendBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/user/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/frontend/css/plugins/iCheck/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/frontend/css/index.css') }}">
+    <!--Overlay-->
+    <link rel="stylesheet" href="{{ asset('bundles/frontend/css/plugins/OverlayStyles/style8.css') }}">
+{% endblock %}
+
+{% block title %}{{ 'Autenticarse'|trans }}{% endblock %}
+{% block navbar %}
+{% endblock %}
+{% block carousel %}
+{% endblock %}
+{% block body %}
+    <div id="login-form" class="container loginColumns animated fadeInDown">
+        <!--hr-->
+        <div class="row">
+
+            <div class="col-md-6">
+                <h2 class="font-bold">Bienvenido a CBS</h2>
+                <p style="text-align: justify">Casa Booking System más que un sistema es una herramienta que dota al usuario de un grupo de servicios y funcionalidades que mejorarán el proceso de toma de decisión.</p>
+
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="ibox-content">
+                    <form class="m-t" role="form" action="{{ path("fos_user_security_check") }}" method="post">
+                        <div class="text-03em">
+                            <div class="alert alert-danger text-center {{ error | default('') == '' ? "hide" : "" }}">
+                                <span class="text-danger">{{ error | default ('') |trans({}, 'FOSUserBundle') }}</span>
+                            </div>
+                        </div>
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+
+                        <div class="form-group">
+                            <input type="text" id="username" name="_username" value="{{ last_username }}"
+                                   required="required" placeholder="{{ 'Usuario'|trans }}" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="password" name="_password" required="required"
+                                   placeholder="{{ 'Contraseña'|trans }}" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox i-checks"><label> <input type="checkbox" id="remember_me" class="i-checks"
+                                                                          name="_remember_me"
+                                                                          value="on"><i></i> {{ 'Recordar'|trans }}
+                                </label></div>
+                        </div>
+                        <button type="submit"
+                                class="btn btn-primary block full-width m-b">{{ 'Inicia sesión'|trans }}</button>
+
+
+                        <p class="text-muted text-center">
+                            <small>{{ '¿No tienes una cuenta?'|trans }}</small>
+                        </p>
+                       {# <a class="btn btn-sm btn-white btn-block"
+                           href="{{ path("fos_user_registration_register") }}">{{ 'Crea una cuenta'|trans }}</a>#}
+                        <button id="trigger-overlay" type="button" class="btn btn-sm btn-white btn-block">{{ 'Crea una cuenta'|trans }}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr>
+        {{ include('FrontendBundle:description_api:description.html.twig' ) }}
+        <hr>
+
+        <div class="row">
+            <div class="col-md-5">
+                Copyright HDS Marketing Solutions
+            </div>
+            <div class="col-sm-1"> </div>
+            <div class="col-md-6 text-right">
+                <small>&copy; 2015-2016</small>
+            </div>
+        </div>
+        <!--hr-->
+    </div>
+    {% include 'FOSUserBundle:Registration:overlayRegister.html.twig' with {  form: form_register } %}
+{% endblock %}
+{% block footer %}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <!-- iCheck -->
+    <script src="{{ asset('bundles/frontend/js/plugins/iCheck/icheck.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $(".linkExternal").click(function() {
+                url = $(this).attr("href");
+                window.open(url, '_blank');
+                return false;
+            });
+
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green'
+            });
+        });
+    </script>
+    <!--Overlay-->
+    <script src="{{ asset('bundles/frontend/js/plugins/OverlayStyles/modernizr.custom.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/plugins/OverlayStyles/classie.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/plugins/OverlayStyles/demo7.js') }}"></script>
+{% endblock %}

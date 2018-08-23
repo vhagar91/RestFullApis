@@ -1,0 +1,24 @@
+.toast-title{
+    text-align: center;
+}
+
+.toast-message{
+    text-align: center;
+    padding-left: 30px;
+}
+
+button.toast-close-button{
+    font-weight: normal;
+}
+
+div.toast{
+    padding-left: 15px !important;
+}
+
+#toast-container > .toast{
+    background-image:none !important;
+}
+
+.info_icon{
+    margin-top: -7px !important;
+}

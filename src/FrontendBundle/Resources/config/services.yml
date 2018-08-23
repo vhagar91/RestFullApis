@@ -1,0 +1,12 @@
+services:
+
+    frontend.language_repository:
+        alias: frontend.language_repository.doctrine
+        public: false
+
+    frontend.language_repository.doctrine:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ FrontendBundle\Entity\Language ]
+        public: false

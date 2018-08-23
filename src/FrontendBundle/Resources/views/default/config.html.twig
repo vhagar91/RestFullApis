@@ -1,0 +1,47 @@
+<div class="modal inmodal fade" id="myModalKeyCombination" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h5 style="font-size: 20px" class="modal-title">{{ 'frontend.title_modal.title'|trans }}</h5>
+            </div>
+            <div class="modal-body">
+                <p><strong>Alt+i</strong> {{ 'frontend.option_insert.insert'|trans }}.</p>
+                <hr>
+                <p><strong>Alt+c</strong> {{ 'frontend.option_modific.modific'|trans }}.</p>
+                <hr>
+                <p><strong>Supr</strong> {{ 'frontend.option_delete.delete'|trans }}.</p>
+                <hr>
+                <p><strong>Alt+h</strong> {{ 'frontend.option_help.help'|trans }}.</p>
+                <hr>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'frontend.btn_close.close'|trans }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<li class="dropdown">
+    <a href="#" data-toggle="dropdown" class="dropdown-toggle count-info" aria-expanded="false">
+        <i class="fa fa-gears"></i>
+    </a>
+    <ul class="dropdown-menu dropdown-alerts">
+        <li>
+            <a data-toggle="modal" data-target="#myModalKeyCombination">
+                <div>
+                     {{ 'frontend.menu.key_combination'|trans }}
+                </div>
+            </a>
+        </li>
+        {% if is_granted('ROLE_ADMIN') %}
+            <li class="divider"></li>
+            <li>
+                <a href="{{ path('backend_homepage') }}">
+                    <div>
+                        Backend
+                    </div>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</li>

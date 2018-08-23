@@ -1,0 +1,93 @@
+{% extends 'FrontendBundle::layout.html.twig' %}
+ {% block stylesheets %}
+     {{ parent() }}
+     <link rel="stylesheet" href="{{ asset('bundles/frontend/css/plugins/chosen/chosen.css') }}">
+     <link rel="stylesheet" href="{{ asset('bundles/frontend/css/plugins/select2/select2.min.css') }}" >
+
+     <!-- Data Tables -->
+     <link rel="stylesheet" href="{{ asset('bundles/frontend/css/plugins/dataTables/dataTables.bootstrap.css') }}">
+     <link rel="stylesheet" href="{{ asset('bundles/frontend/css/plugins/dataTables/dataTables.responsive.css') }}">
+     <link rel="stylesheet" href="{{ asset('bundles/frontend/css/plugins/dataTables/dataTables.tableTools.min.css') }}">
+     <link rel="stylesheet" href="{{ asset('bundles/frontend/css/plugins/dataTables/select.dataTables.min.css') }}">
+
+     <!-- Toastr style -->
+     <link rel="stylesheet" href="{{ asset('bundles/frontend/css/plugins/toastr/toastr-master/toastr.min.css') }}">
+     <link rel="stylesheet" href="{{ asset('bundles/frontend/css/plugins/toastr/toastr-hds.css') }}">
+
+     <link rel="stylesheet" href="{{ asset('bundles/frontend/css/plugins/jquery-confirm/jquery-confirm.min.css') }}">
+
+     <link rel="stylesheet" href="{{ asset('bundles/frontend/css/project.css') }}">
+     <link rel="stylesheet" href="{{ asset('bundles/frontend/css/index.css') }}">
+ {% endblock %}
+{% block navbar %}
+    {{ include('FrontendBundle:default:navbar.html.twig') }}
+{% endblock %}
+{% block carousel %}
+{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        {{ include('FrontendBundle:project:panels.html.twig') }}
+        {#---Modal help----#}
+        {{ include('FrontendBundle:help:help.html.twig') }}
+    </div>
+
+{% endblock %}
+{% block footer %}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <!-- Chosen -->
+    <script src="{{ asset('bundles/frontend/js/plugins/chosen/chosen.jquery.js') }}"></script>
+
+    <script src="{{ asset('bundles/frontend/js/navbar/navbar-static.js') }}"></script>
+    <!-- Mainly scripts -->
+    <script src="{{ asset('bundles/frontend/js/plugins/peity/jquery.peity.min.js') }}"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{{ asset('bundles/frontend/js/inspinia.js') }}"></script>
+
+    <script src="{{ asset('bundles/frontend/js/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+
+    <!-- iCheck -->
+    <script src="{{ asset('bundles/frontend/js/plugins/iCheck/icheck.min.js') }}"></script>
+
+    <!-- Peity d data  -->
+    <script src="{{ asset('bundles/frontend/js/demo/peity-demo.js') }}"></script>
+
+    <!-- Select2 -->
+    <script src="{{ asset('bundles/frontend/js/plugins/select2/select2.full.min.js') }}"></script>
+
+    <!-- Data Tables -->
+    <script src="{{ asset('bundles/frontend/js/plugins/dataTables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/plugins/dataTables/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/plugins/dataTables/dataTables.responsive.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/plugins/dataTables/dataTables.tableTools.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/plugins/dataTables/dataTables.select.min.js') }}"></script>
+
+    <!-- Toastr -->
+    <script src="{{ asset('bundles/frontend/js/plugins/toastr/toastr-master/toastr.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/plugins/toastr/toastr-hds.js') }}"></script>
+
+    <script src="{{ asset('bundles/frontend/js/plugins/jquery-confirm/jquery-confirm.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            <!-- Enable portlets -->
+            //WinMove();
+            $('.chosen-container-single').width( '100%' );
+        });
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"100%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    </script>
+    <!--Index-->
+    <script src="{{ asset('bundles/frontend/js/index.js') }}"></script>
+    <!--Help-->
+    <script src="{{ asset('bundles/frontend/js/help.js') }}"></script>
+{% endblock %}

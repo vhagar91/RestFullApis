@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2015-11-05T12:40:48Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="d7927a639883b987ddeebc1012575149397a783a" resname="Acción">
+        <jms:reference-file line="41">views/User/index.html.twig</jms:reference-file>
+        <jms:reference-file line="44">views/Role/index.html.twig</jms:reference-file>
+        <source>Acción</source>
+        <target state="new">Acción</target>
+      </trans-unit>
+      <trans-unit id="fadcf2d5a3d5cecd1650a49ef221dc90192b7ea0" resname="Adicionar">
+        <jms:reference-file line="28">views/User/index.html.twig</jms:reference-file>
+        <source>Adicionar</source>
+        <target state="new">Adicionar</target>
+      </trans-unit>
+      <trans-unit id="c111e0ab9ddb1dfb79f8a12c741ba6dbdb07992a" resname="Cancelar">
+        <jms:reference-file line="32">views/User/modalAdd.html.twig</jms:reference-file>
+        <jms:reference-file line="20">views/Role/modalAdd.html.twig</jms:reference-file>
+        <source>Cancelar</source>
+        <target state="new">Cancelar</target>
+      </trans-unit>
+      <trans-unit id="bb6aed390ec629768b498516b41001744628a68b" resname="Confirmación de Contraseña">
+        <jms:reference-file line="21">views/User/modalAdd.html.twig</jms:reference-file>
+        <source>Confirmación de Contraseña</source>
+        <target state="new">Confirmación de Contraseña</target>
+      </trans-unit>
+      <trans-unit id="a8973aedf52c762b4a4e7f5e0edf2ec90850b189" resname="Confirmación de contraseña">
+        <jms:reference-file line="21">views/User/modalAdd.html.twig</jms:reference-file>
+        <source>Confirmación de contraseña</source>
+        <target state="new">Confirmación de contraseña</target>
+      </trans-unit>
+      <trans-unit id="5a6d1c612954979ea99ee33dbb2d231b00f6ac0a" resname="Contraseña">
+        <jms:reference-file line="18">views/User/modalAdd.html.twig</jms:reference-file>
+        <source>Contraseña</source>
+        <target state="new">Contraseña</target>
+      </trans-unit>
+      <trans-unit id="9690a9ccc780e7ab9e738cce09079469419d89e8" resname="Contraseña del usuario">
+        <jms:reference-file line="18">views/User/modalAdd.html.twig</jms:reference-file>
+        <source>Contraseña del usuario</source>
+        <target state="new">Contraseña del usuario</target>
+      </trans-unit>
+      <trans-unit id="98f00c3e0a0aae250ac18a22fdde2383816d7dd8" resname="Correo">
+        <jms:reference-file line="15">views/User/modalAdd.html.twig</jms:reference-file>
+        <jms:reference-file line="39">views/User/index.html.twig</jms:reference-file>
+        <source>Correo</source>
+        <target state="new">Correo</target>
+      </trans-unit>
+      <trans-unit id="9d28e6578297c044c71117c161ffa2080992d819" resname="Correo electrónico del usuario">
+        <jms:reference-file line="15">views/User/modalAdd.html.twig</jms:reference-file>
+        <source>Correo electrónico del usuario</source>
+        <target state="new">Correo electrónico del usuario</target>
+      </trans-unit>
+      <trans-unit id="7fda3970598ef60b0b151b2274290dd18559cf83" resname="Descripción">
+        <jms:reference-file line="15">views/Role/modalAdd.html.twig</jms:reference-file>
+        <jms:reference-file line="43">views/Role/index.html.twig</jms:reference-file>
+        <source>Descripción</source>
+        <target state="new">Descripción</target>
+      </trans-unit>
+      <trans-unit id="1fd2b782c4f11abe6935d4c65000ada454875dca" resname="Descripción del role">
+        <jms:reference-file line="15">views/Role/modalAdd.html.twig</jms:reference-file>
+        <source>Descripción del role</source>
+        <target state="new">Descripción del role</target>
+      </trans-unit>
+      <trans-unit id="7195059e8f6b0281b0754aa47de6efda8273be3a" resname="Desea eliminar este elemento.">
+        <jms:reference-file line="3">views/User/index.html.twig</jms:reference-file>
+        <source>Desea eliminar este elemento.</source>
+        <target state="new">Desea eliminar este elemento.</target>
+      </trans-unit>
+      <trans-unit id="0a9a345cf9a1ccfd0bb33810c210df039e643138" resname="Desea eliminar este role.">
+        <jms:reference-file line="3">views/Role/index.html.twig</jms:reference-file>
+        <source>Desea eliminar este role.</source>
+        <target state="new">Desea eliminar este role.</target>
+      </trans-unit>
+      <trans-unit id="eaad89bccc30de70f8115b500d22baca5e20d826" resname="Editar Rol">
+        <jms:reference-file line="6">views/Role/modalAdd.html.twig</jms:reference-file>
+        <source>Editar Rol</source>
+        <target state="new">Editar Rol</target>
+      </trans-unit>
+      <trans-unit id="5ca04bea5a3d8b72261438b57d4afc3cad06da58" resname="Editar usuario">
+        <jms:reference-file line="6">views/User/modalAdd.html.twig</jms:reference-file>
+        <source>Editar usuario</source>
+        <target state="new">Editar usuario</target>
+      </trans-unit>
+      <trans-unit id="54e140f9f07354c67d82e4715c8ae1a311398525" resname="Eliminar">
+        <jms:reference-file line="2">views/User/index.html.twig</jms:reference-file>
+        <jms:reference-file line="2">views/Role/index.html.twig</jms:reference-file>
+        <source>Eliminar</source>
+        <target state="new">Eliminar</target>
+      </trans-unit>
+      <trans-unit id="87cf2a843e2e43a05edc326327fca7e1388bc196" resname="Estado">
+        <jms:reference-file line="40">views/User/index.html.twig</jms:reference-file>
+        <source>Estado</source>
+        <target state="new">Estado</target>
+      </trans-unit>
+      <trans-unit id="a0b626d6e9f028dfb8f5b2dad4cff9bcec7cb7aa" resname="Guardar">
+        <jms:reference-file line="33">views/User/modalAdd.html.twig</jms:reference-file>
+        <jms:reference-file line="21">views/Role/modalAdd.html.twig</jms:reference-file>
+        <source>Guardar</source>
+        <target state="new">Guardar</target>
+      </trans-unit>
+      <trans-unit id="474ae52625b87d7628ae7b20a499329a99e07119" resname="Id">
+        <jms:reference-file line="37">views/User/index.html.twig</jms:reference-file>
+        <jms:reference-file line="41">views/Role/index.html.twig</jms:reference-file>
+        <source>Id</source>
+        <target state="new">Id</target>
+      </trans-unit>
+      <trans-unit id="82eb87e289ed73f243f5e2996a54e042d288fe08" resname="Listado">
+        <jms:reference-file line="14">views/User/index.html.twig</jms:reference-file>
+        <source>Listado</source>
+        <target state="new">Listado</target>
+      </trans-unit>
+      <trans-unit id="a0509b7780628bd9d9abc7eb8a2163477341053a" resname="NO">
+        <jms:reference-file line="5">views/User/index.html.twig</jms:reference-file>
+        <jms:reference-file line="5">views/Role/index.html.twig</jms:reference-file>
+        <source>NO</source>
+        <target state="new">NO</target>
+      </trans-unit>
+      <trans-unit id="e68491e91c7c64501c49173e8744d09191424cb2" resname="Nombre">
+        <jms:reference-file line="11">views/User/modalAdd.html.twig</jms:reference-file>
+        <jms:reference-file line="12">views/Role/modalAdd.html.twig</jms:reference-file>
+        <source>Nombre</source>
+        <target state="new">Nombre</target>
+      </trans-unit>
+      <trans-unit id="7bad39490ba655d6ea5347a661db7d46b7781008" resname="Nombre del role">
+        <jms:reference-file line="12">views/Role/modalAdd.html.twig</jms:reference-file>
+        <source>Nombre del role</source>
+        <target state="new">Nombre del role</target>
+      </trans-unit>
+      <trans-unit id="c7400ae0e7da8e78d11cace17fee1a28e9818640" resname="Nombre del usuario">
+        <jms:reference-file line="11">views/User/modalAdd.html.twig</jms:reference-file>
+        <source>Nombre del usuario</source>
+        <target state="new">Nombre del usuario</target>
+      </trans-unit>
+      <trans-unit id="a114f2e7065c2de87881fb6db3d57f69bda8a638" resname="Nombre usuario">
+        <jms:reference-file line="38">views/User/index.html.twig</jms:reference-file>
+        <source>Nombre usuario</source>
+        <target state="new">Nombre usuario</target>
+      </trans-unit>
+      <trans-unit id="dd3d0273095adda2fe957de47f335ec91ce2bac0" resname="Nuevo Rol">
+        <jms:reference-file line="6">views/Role/modalAdd.html.twig</jms:reference-file>
+        <source>Nuevo Rol</source>
+        <target state="new">Nuevo Rol</target>
+      </trans-unit>
+      <trans-unit id="699e7ca00b5da9136fa98bcb3980b138cefa1d2f" resname="Nuevo usuario">
+        <jms:reference-file line="6">views/User/modalAdd.html.twig</jms:reference-file>
+        <source>Nuevo usuario</source>
+        <target state="new">Nuevo usuario</target>
+      </trans-unit>
+      <trans-unit id="a73f1345df69647021f401499146a518864ef87a" resname="Rol">
+        <jms:reference-file line="42">views/Role/index.html.twig</jms:reference-file>
+        <source>Rol</source>
+        <target state="new">Rol</target>
+      </trans-unit>
+      <trans-unit id="5234ab9153a5bbb8bab9a6218ecb23757b45286d" resname="Rol nuevo">
+        <jms:reference-file line="32">views/Role/index.html.twig</jms:reference-file>
+        <source>Rol nuevo</source>
+        <target state="new">Rol nuevo</target>
+      </trans-unit>
+      <trans-unit id="47dcc27d6e87ece8baebe7e3877a261a5467093d" resname="Roles">
+        <jms:reference-file line="15">views/Role/index.html.twig</jms:reference-file>
+        <source>Roles</source>
+        <target state="new">Roles</target>
+      </trans-unit>
+      <trans-unit id="2cd845399ebc86aad1fd9e1e6bfa6aa61179694a" resname="SI">
+        <jms:reference-file line="4">views/User/index.html.twig</jms:reference-file>
+        <jms:reference-file line="4">views/Role/index.html.twig</jms:reference-file>
+        <source>SI</source>
+        <target state="new">SI</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

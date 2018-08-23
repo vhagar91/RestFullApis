@@ -1,0 +1,63 @@
+<div class="loginColumns animated fadeInDown" style="margin-top: 5%">
+    <div class="row">
+        <div class="col-md-5">
+            <h2 class="font-bold">Bienvenido a CBS</h2>
+
+            <p>
+
+            </p>
+            <div class="facebook-div">
+                <a href="javascript:void(0);" style="margin-top: 29px;"
+                   onclick="javascript:FB.login(callbackLogin, {scope: 'public_profile,email'});">
+                    <i class="fa fa-facebook big-icon pull-left"></i>
+                </a>
+                <span style="color: #fff; font-size: 19px;"> {{ 'Registrarse con Facebook' | trans }}  </span>
+                <span style="color: #777777; font-size: 19px;"> {{ 'o' | trans }}...</span>
+            </div>
+
+
+        </div>
+        <div class="col-sm-1 hidden-xs hidden-sm toOr">
+            <div style="border-right: 1px solid #e7eaec; margin-right: 6px; height: 40%; width: 51%"></div>
+            <div class="or">or</div>
+            <div style="border-right: 1px solid #e7eaec; margin-right: 6px; height: 40%; width: 51%; margin-top: 25px;"></div>
+        </div>
+        <div class="col-md-6">
+            <div class="ibox-content">
+                <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+                    {% if form_errors(form) is not empty %}
+                        <div id="errores" style="margin: 0 0 10px; font-size: 0.3em; height: 50px" role="alert">
+                            {{ form_errors(form) }}
+                        </div>
+                        {{ form_errors(form) }}
+                    {% endif %}
+                    <div class="form-group">
+                        {{ form_widget(form.username, { 'attr': {'placeholder': 'Nombre'|trans, 'title':'Nombre del usuario'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_widget(form.email, { 'attr': {'placeholder': 'Correo'|trans, 'title':'Correo electrónico del usuario'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'Contraseña'|trans, 'title':'Contraseña del usuario'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'Confirmación de contraseña'|trans, 'title':'Confirmación de Contraseña'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                    </div>
+                    {{ form_rest(form) }}
+                    <div class="form-group">
+                        <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> {{ 'Acepta los terminos y política'|trans }}</label></div>
+                    </div>
+                    <input type="submit" value="{{ 'Registrarse'|trans({}, 'FOSUserBundle') }}" />
+
+                    <p class="text-muted text-center"><small>{{ '¿Ya tienes una cuenta?'|trans }}</small></p>
+                    <a class="btn btn-sm btn-white btn-block" href="{{ path("fos_user_security_login") }}">{{ 'Autentícate'|trans }}</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

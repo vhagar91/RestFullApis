@@ -1,0 +1,28 @@
+<div id="modal-new-nom-{{ id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" style="display: none;">
+    <div class="modal-dialog" style="width: 30%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title" data-title-new="{{ 'backend.title_add.nom' | trans }}" data-title-edit="{{ 'backend.title_edit.nom' | trans }}"></h4>
+            </div>
+            <div class="modal-body">
+                {{ form_widget(form._token) }}
+                <div id="error-container-form-{{ id }}" class="error-container hide"></div>
+                <form id="form-{{ id }}" role="form" class="form-margin-top">
+                    <div class="form-group">
+                        {{ form_widget(form.name, { 'attr': {'placeholder': 'backend.placeholder_name'|trans, 'title':'backend.field_name.tooltip'|trans, 'data-toggle':'tooltip', 'data-container':'body', 'class':'form-control' }}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.description, { 'attr': {'placeholder': 'backend.placeholder_description'|trans, 'title':'Descripción'|trans, 'data-toggle':'tooltip', 'data-container':'body','rows':"6"  }}) }}
+                    </div>
+                </form>
+                <div style="text-align: right">
+                    <button data-dismiss="modal" class="btn btn-default btn-modal-default" type="button">{{ 'backend.btn_cancel'|trans }}</button>
+                    <button class="btn btn-primary m-r-15" onclick="saveNewNom(false)" type="button">{{ 'backend.btn_save'|trans }}</button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

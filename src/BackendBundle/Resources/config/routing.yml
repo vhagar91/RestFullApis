@@ -1,0 +1,7 @@
+backend_homepage:
+    path:     /backend
+    defaults: { _controller: BackendBundle:Skeleton:index }
+
+backend_routes:
+    resource: "@BackendBundle/Controller/"
+    type:     annotation

@@ -1,0 +1,58 @@
+{% for project in projects %}
+    <div id="{{ 'project_id_data_' ~ project.id}}" class="hide" style="display: none">
+        {
+            "id":{{ project.id }},
+            "frontendbundle_datproject[name]": "{{ project.name }}",
+            "frontendbundle_datproject[description]": "{{ project.description }}",
+            "frontendbundle_datproject[applicationtype]": {{ project.applicationtype.id }}
+            {% set counter = 0 %}
+            {% for url in project.urls %}
+            ,"frontendbundle_datproject[urls][{{ counter }}][dir]": "{{ url.dir }}"
+                {% set counter = counter + 1 %}
+            {% endfor %}
+            {% set counter = 0 %}
+            {% for apiproject in project.apisprojects %}
+                ,"frontendbundle_datproject[apisprojects][{{ counter }}][apikey]": "{{ apiproject.apikey }}",
+                "frontendbundle_datproject[apisprojects][{{ counter }}][api]": {{ apiproject.api.id }}
+                {% set counter = counter + 1 %}
+            {% endfor %}
+        }
+    </div>
+
+    <div id="{{ 'project_id_' ~ project.id}}" class="ibox details-project">
+        <div class="ibox-title">
+            <h5>Details</h5>
+            <div class="ibox-tools">
+                {{ include('FrontendBundle:project:configPanels.html.twig', { project: project }) }}
+            </div>
+        </div>
+        <div class="ibox-content">
+            <h2 class="font-bold m-b-xs">
+                {{ project.name }}
+            </h2>
+            <hr>
+            <h4>{{ 'frontendbundle.column_name.description' | trans }}</h4>
+
+            <div class="small text-muted">
+                {{ project.description }}
+                <br/>
+            </div>
+            <dl class="small m-t-md">
+                <dt>{{ 'frontendbundle.field_placeholder.aplicationtype'|trans }}:</dt>
+                <dd>{{ project.applicationtype.name }}</dd>
+                <hr>
+                <dt>{{ 'frontendbundle.name.apis'|trans }}:</dt>
+                {% for apiproject in project.apisprojects %}
+                    <dd>{{ apiproject.api.name }}</dd>
+                    <dd>{{ apiproject.apikey }}</dd>
+                {% endfor %}
+                <br>
+                <dt>{{ 'frontendbundle.tab.urls'|trans }}</dt>
+                {% for url in project.urls %}
+                    <dd>{{ url.dir }}</dd>
+                {% endfor %}
+            </dl>
+            <hr>
+        </div>
+    </div>
+{% endfor %}

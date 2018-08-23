@@ -1,0 +1,41 @@
+{% for api in apis %}
+    <div id="{{ 'accordion' ~ api.id }}" class="panel-group payments-method">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <img  href="{{ path('homepage') }}" src="{{ asset('bundles/frontend/img/api-project/mp.png') }}" alt="MyCasaParticular" class="img-responsive" style="margin-top: -10px">
+                </div>
+                <h5 class="panel-title">
+                    <a href="{{ '#collapseOne' ~ api.id }}" data-parent="{{ '#accordion' ~ api.id }}" data-toggle="collapse" class="" aria-expanded="true">{{ api.name }}</a>
+                </h5>
+            </div>
+            <div class="panel-collapse collapse" id="{{ 'collapseOne' ~ api.id }}" aria-expanded="true" style="">
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h2>Detalles</h2>
+                            <strong>Tipo</strong>: {{ api.apitype.name }} <br>
+                            <strong>Descripción</strong>: {{ api.description }} <br>
+                            <p class="m-t">
+                            </p>
+                            <small class="block text-muted linkExternal" href="{{ path('nelmio_api_doc_index',{"view": api.class}) }}" style="cursor: pointer">
+                                Leer más
+                                <i class="fa fa-external-link"></i>
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+{#
+
+{%if temp == 'BackendTestEmailTemplateController'%}in{%endif%}
+
+#}

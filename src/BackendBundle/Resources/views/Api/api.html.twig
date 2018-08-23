@@ -1,0 +1,386 @@
+<div id="confirm-lenguaje-api" class="hide"
+     data-title="{{ 'backend.title_modal_delete' | trans }}"
+     data-content="{{ 'backend.content_delete_modal.api' | trans }}"
+     data-confirmbutton="{{ 'backend.btn_yes' | trans }}"
+     data-cancelbutton="{{ 'backend.btn_no' | trans }}">
+</div>
+
+<div id="main_api" data-action="{{ path('backend_main_api') }}" class="col-lg-12">
+    <div class="row">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>{{ 'backend.title_grid.api' | trans }}</h5>
+
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="fullscreen-link">
+                                    <i class="fa fa-expand"></i>
+                                </a>
+                                <a class="dropdown-toggle refresh-api" href="#">
+                                    <i class="fa fa-rotate-left"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-gear"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li>
+                                        <a href="#modal-new-api" data-toggle="modal" data-action="{{ path('backend_save_api') }}" data-action-success="{{ path('homepage') }}" class="new-api">{{ 'backend.btn_add.api' | trans }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <table class="table table-striped table-bordered table-hover " id="table-apis">
+                                <thead>
+                                <trli>
+                                    <th>{{ 'backend.column_id' | trans }}</th>
+                                    <th>{{ 'backend.column_api' | trans }}</th>
+                                    <th>{{ 'backend.column_type.api' | trans }}</th>
+                                    <th>{{ 'backend.column_description' | trans }}</th>
+                                    <th>{{ 'backend.column_action' | trans }}</th>
+                                </trli>
+                                </thead>
+                                <tbody>
+
+                                {% for api in apis %}
+
+                                    <div id="{{ 'api_id_data_' ~ api.id}}" class="hide" style="display: none">
+                                        {
+                                        "{{ form.apitype.vars.full_name }}" : {{ api.apitype.id }},
+                                        "{{ form.name.vars.full_name }}" : "{{ api.name }}",
+                                        "{{ form.description.vars.full_name }}" : "{{ api.description }}",
+                                        "{{ form.code.vars.full_name }}" : "{{ api.code }}",
+                                        "{{ form.status.vars.full_name }}" : "{{ api.status }}",
+                                        "{{ form.class.vars.full_name }}" : "{{ api.class }}",
+                                        "{{ form.db_host.vars.full_name }}" : "{{ api.db_host }}",
+                                        "{{ form.db_name.vars.full_name }}" : "{{ api.db_name }}",
+                                        "{{ form.db_user.vars.full_name }}" : "{{ api.db_user }}",
+                                        "{{ form.db_password.vars.full_name }}" : "{{ api.db_password }}",
+                                        "{{ form.driver.vars.full_name }}" : {{ api.driver.id }},
+                                        "{{ form.db_port.vars.full_name }}" :  {{ api.db_port }}
+                                        }
+                                    </div>
+
+                                    <tr>
+                                        <td>{{ api.id }}</td>
+                                        <td>{{ api.name }}</td>
+                                        <td>{{ api.apitype.name }}</td>
+                                        <td>{{ api.description }}</td>
+                                        <td style=" text-align: center">
+                                            {#
+                                            <a href="#">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            |
+                                            #}
+                                            <a data-idapi="{{ api.id }}" href="#modal-new-api" data-toggle="modal" class="edit-api"  data-action="{{ path('backend_edit_api') }}" data-action-success="{{ path('homepage') }}">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                            |
+                                            <a data-href="{{ path('backend_delete_api', {'id':api.id}) }}" href="#" class="delete-api">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                                <!--tfoot>
+                                <tr>
+                                    <th>Rendering engine</th>
+                                    <th>Browser</th>
+                                    <th>Platform(s)</th>
+                                    <th>Engine version</th>
+                                    <th>CSS grade</th>
+                                </tr>
+                                </tfoot-->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ include('BackendBundle:Api:modalAddApi.html.twig') }}
+
+<script>
+    var validatorGeneralTab;
+    var validatorConexTab;
+
+    $(document).ready(function(){
+        var apisTable = $('#table-apis').DataTable( {
+            select: true,
+             columnDefs: [
+             {
+             "targets": [ 0 ],
+             "visible": false,
+             "searchable": false
+             }
+             ]
+        });
+
+        $('.refresh-api').on('click', function(){
+            updateTab('','',{});
+        });
+
+        //var modal = $('modal-new-api').modal();
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green'
+        });
+
+        $('#modal-new-api .chosen-select').chosen();
+        $('#modal-new-api .chosen-container-single').width( '100%' );
+
+        initValidatorApi();
+        initNewApi();
+        initEditApi();
+        initDeleteApi();
+    });
+
+    var btnActionModal = null;
+
+    function initValidatorApi(){
+        var tab1 = $('#tab-1');
+        var formTab1 = tab1.find('form');
+        validatorGeneralTab = formTab1.validate({
+            errorElement: 'span',
+            errorClass: 'has-error',
+            ignore: "",
+            errorLabelContainer: tab1.find(".error-container"),
+            rules: {
+                'frontendbundle_datapi[name]': {
+                    required: true
+                },
+                'frontendbundle_datapi[apitype]': {
+                    required: true
+                }
+            },
+            invalidHandler: function (event, validator) {},
+            highlight: function (element, clsError) { // hightlight error inputs
+                element = $(element);
+                element.parent().addClass(clsError);
+            },
+            unhighlight: function (element, clsError) { // revert the change done by hightlight
+                element = $(element);
+                element.parent().removeClass(clsError);
+            }
+        });
+        $('#frontendbundle_datapi_apitype').change(function(){
+            validatorGeneralTab.form();
+        });
+
+        var tab2 = $('#tab-2');
+        var formTab2 = tab2.find('form');
+        validatorConexTab = formTab2.validate({
+            errorElement: 'span',
+            errorClass: 'has-error',
+            ignore: "",
+            errorLabelContainer: tab1.find(".error-container"),
+            rules: {
+                'frontendbundle_datapi[class]': {
+                    required: true
+                },
+                'frontendbundle_datapi[db_host]': {
+                    required: true
+                },
+                'frontendbundle_datapi[db_port]': {
+                    required: true,
+                    digits:true
+                },
+                'frontendbundle_datapi[driver]': {
+                    required: true
+                },
+                'frontendbundle_datapi[db_name]': {
+                    required: true
+                },
+                'frontendbundle_datapi[db_user]': {
+                    required: true
+                },
+                'frontendbundle_datapi[db_password]': {
+                    required: true
+                }
+            },
+            invalidHandler: function (event, validator) {},
+            highlight: function (element, clsError) {
+                element = $(element);
+                element.parent().addClass(clsError);
+            },
+            unhighlight: function (element, clsError) {
+                element = $(element);
+                element.parent().removeClass(clsError);
+            }
+        });
+        $('#frontendbundle_datapi_driver').change(function(){
+            validatorConexTab.form();
+        });
+    }
+
+    function formsValidApi(){
+        var msgInvalid = 'Existen campos invalidos';
+        if(!validatorGeneralTab.form()){
+            $('[href=#tab-1]').click();
+            hds.msg.show(3, msgInvalid);
+            return false;
+        }
+        if(!validatorConexTab.form()){
+            $('[href=#tab-2]').click();
+            hds.msg.show(3, msgInvalid);
+            return false;
+        }
+
+        return true;
+    }
+
+    function initNewApi(){
+        $('.new-api').on('click', function(){
+            btnActionModal = $(this);
+
+            var title = $('#modal-new-api .modal-title');
+            title.html(title.data('title-new'));
+
+            var modal = $('#modal-new-api');
+            modal.find('input.form-control').each(function(){
+                var input = $(this);
+                input.val('');
+            });
+            modal.find('textarea').each(function(){
+                var input = $(this);
+                input.val('');
+            });
+            modal.find('select').each(function(){
+                var input = $(this);
+                input.val('').chosen().trigger("chosen:updated");
+            });
+            modal.find('input.i-checks').each(function(){
+                var input = $(this);
+                var v = true;
+                input.prop('checked', v);
+                input.iCheck('update');
+            });
+        });
+    }
+
+    function initEditApi(){
+        $('.edit-api').on('click', function(){
+            var link = $(this);
+            btnActionModal = link;
+
+            var title = $('#modal-new-api .modal-title');
+            title.html(title.data('title-edit'));
+
+            var id = 'api_id_data_' + link.data('idapi');
+            var data = JSON.parse($('#'+id).html());
+
+            var modal = $('#modal-new-api');
+            modal.find('input.form-control').each(function(){
+                var input = $(this);
+                input.val(data[input.attr('name')]);
+            });
+            modal.find('textarea').each(function(){
+                var input = $(this);
+                input.val(data[input.attr('name')]);
+            });
+            modal.find('select').each(function(){
+                var input = $(this);
+                input.val(data[input.attr('name')]).chosen().trigger("chosen:updated");
+            });
+            modal.find('input.i-checks').each(function(){
+                var input = $(this);
+
+                var v = !!(data[input.attr('name')]*1);
+                input.prop('checked', v);
+                input.iCheck('update');
+            });
+        });
+    }
+
+    function initDeleteApi(){
+        var confirmLenguaje = $('#confirm-lenguaje-api');
+        $('.delete-api').on('click', function(){
+            var link = $(this);
+            $.confirm({
+                title: confirmLenguaje.data('title'),
+                content: confirmLenguaje.data('content'),
+                confirmButton: confirmLenguaje.data('confirmbutton'),
+                cancelButton: confirmLenguaje.data('cancelbutton'),
+                backgroundDismiss: false,
+                confirm: function () {
+                    HoldOn.open();
+                    $.post(link.data('href'), {},
+                            function (success) {
+                                HoldOn.close();
+                                if (success.success) {
+                                    updateTab('', '', {});
+                                    //window.location.href=pathSuccess;
+                                }
+                                else {
+                                    hds.msg.show(3, success.msg);
+                                }
+                            }
+                    ).fail(function () {
+                                HoldOn.close();
+                                hds.msg.show(3, 'Ha ocurrido un error');
+                            });
+                },
+                cancel: function(){}
+            });
+        });
+    }
+
+    function saveNewApi(){
+        if(!formsValidApi()){
+            return;
+        }
+
+        var path = btnActionModal.data('action');
+        var pathSuccess = btnActionModal.data('action-success');
+
+        var data = {
+            'frontendbundle_datapi[_token]':$('#frontendbundle_datapi__token').val(),
+            'frontendbundle_datapi[name]' : $('#frontendbundle_datapi_name').val(),
+            'frontendbundle_datapi[code]' : $('#frontendbundle_datapi_code').val(),
+            'frontendbundle_datapi[apitype]' : $('#frontendbundle_datapi_apitype').val(),
+            'frontendbundle_datapi[description]' : $('#frontendbundle_datapi_description').val(),
+            'frontendbundle_datapi[status]' : $('#frontendbundle_datapi_status').prop('checked') ? 1 : 0,
+            'frontendbundle_datapi[class]' : $('#frontendbundle_datapi_class').val(),
+            'frontendbundle_datapi[db_host]' : $('#frontendbundle_datapi_db_host').val(),
+            'frontendbundle_datapi[db_port]' : $('#frontendbundle_datapi_db_port').val(),
+            'frontendbundle_datapi[driver]' : $('#frontendbundle_datapi_driver').val(),
+            'frontendbundle_datapi[db_name]' : $('#frontendbundle_datapi_db_name').val(),
+            'frontendbundle_datapi[db_user]' : $('#frontendbundle_datapi_db_user').val(),
+            'frontendbundle_datapi[db_password]' : $('#frontendbundle_datapi_db_password').val()
+        };
+
+        if(btnActionModal.hasClass('edit-api')){
+            data['id'] = btnActionModal.data('idapi');
+        }
+
+        HoldOn.open();
+        $.post(path,
+                data,
+                function (success) {
+                    HoldOn.close();
+                    if (success.success) {
+                        $('#modal-new-api').modal('hide');
+
+                        var ac = $('#main_api').data('action');
+                        updateTab(ac,'',{});
+                    }
+                    else {
+                        hds.msg.show(3, success.msg);
+                    }
+                }
+        ).fail(function () {
+                    HoldOn.close();
+                    hds.msg.show(3, 'Ha ocurrido un error');
+                });
+    }
+</script>

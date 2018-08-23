@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2015-11-05T15:51:53Z" source-language="en" target-language="de" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="11b2102cea9d4631363a67851c59adc08fecfdec" resname="frontend.btn_close.close">
+        <jms:reference-file line="19">views/default/config.html.twig</jms:reference-file>
+        <source>frontend.btn_close.close</source>
+        <target state="new">Cerrar</target>
+      </trans-unit>
+      <trans-unit id="bd1b69cbaf898882661d94b03148903d124934f3" resname="frontend.menu.key_combination">
+        <jms:reference-file line="32">views/default/config.html.twig</jms:reference-file>
+        <source>frontend.menu.key_combination</source>
+        <target state="new">Combinación de teclas</target>
+      </trans-unit>
+      <trans-unit id="57be0383fc35e8b89d8cc9c275dffd96ef672bc1" resname="frontend.option_delete.delete">
+        <jms:reference-file line="13">views/default/config.html.twig</jms:reference-file>
+        <source>frontend.option_delete.delete</source>
+        <target state="new">Eliminar</target>
+      </trans-unit>
+      <trans-unit id="e7fd792cb2ef8fbd7b448010057ec6d0ee9ae398" resname="frontend.option_help.help">
+        <jms:reference-file line="15">views/default/config.html.twig</jms:reference-file>
+        <source>frontend.option_help.help</source>
+        <target state="new">Ayuda</target>
+      </trans-unit>
+      <trans-unit id="a49fd02f6be1116dabf29b3e80ac0d212f37347d" resname="frontend.option_insert.insert">
+        <jms:reference-file line="9">views/default/config.html.twig</jms:reference-file>
+        <source>frontend.option_insert.insert</source>
+        <target state="new">Adicionar</target>
+      </trans-unit>
+      <trans-unit id="5fe235b4ab0be0994bd098dc99eb3cfce9cc7336" resname="frontend.option_modific.modific">
+        <jms:reference-file line="11">views/default/config.html.twig</jms:reference-file>
+        <source>frontend.option_modific.modific</source>
+        <target state="new">Modificar</target>
+      </trans-unit>
+      <trans-unit id="fdcd710d472f19f03805adac349386db22c7fe1a" resname="frontend.title_modal.title">
+        <jms:reference-file line="6">views/default/config.html.twig</jms:reference-file>
+        <source>frontend.title_modal.title</source>
+        <target state="new">Combinación de Teclas</target>
+      </trans-unit>
+      <trans-unit id="c317a6067eecbe97d0ad60915535095bacb90462" resname="frontendbundle.buttoncancel.name">
+        <jms:reference-file line="61">views/project/modalAddProject.html.twig</jms:reference-file>
+        <source>frontendbundle.buttoncancel.name</source>
+        <target state="new">Cancelar</target>
+      </trans-unit>
+      <trans-unit id="b865a1ec443d5a2f98a278a4b7072698dbdfc962" resname="frontendbundle.buttonhome.name">
+        <jms:reference-file line="22">views/default/navbar.html.twig</jms:reference-file>
+        <jms:reference-file line="21">views/layout/navbar.html.twig</jms:reference-file>
+        <source>frontendbundle.buttonhome.name</source>
+        <target state="new">Inicio</target>
+      </trans-unit>
+      <trans-unit id="c7c4502eea1721889fd1a56daf2df7eb804ed51d" resname="frontendbundle.buttonlogin.name">
+        <jms:reference-file line="25">views/default/navbar.html.twig</jms:reference-file>
+        <jms:reference-file line="24">views/layout/navbar.html.twig</jms:reference-file>
+        <source>frontendbundle.buttonlogin.name</source>
+        <target state="new">Inicia sesión</target>
+      </trans-unit>
+      <trans-unit id="ef07593390a3472e00d6b932f18c17248818ccf3" resname="frontendbundle.buttonlogout.name">
+        <jms:reference-file line="23">views/default/navbar.html.twig</jms:reference-file>
+        <jms:reference-file line="22">views/layout/navbar.html.twig</jms:reference-file>
+        <source>frontendbundle.buttonlogout.name</source>
+        <target state="new">Cerrar sesión</target>
+      </trans-unit>
+      <trans-unit id="1aaf11c5b5aea608f2b10aa317cd2c7d6a8db1f8" resname="frontendbundle.buttonsave.name">
+        <jms:reference-file line="62">views/project/modalAddProject.html.twig</jms:reference-file>
+        <source>frontendbundle.buttonsave.name</source>
+        <target state="new">Guardar</target>
+      </trans-unit>
+      <trans-unit id="3f30b5dcf2a1b4722310f28dab82a272cc966fb2" resname="frontendbundle.column_name.action">
+        <jms:reference-file line="104">views/project/listProjectPanel.html.twig</jms:reference-file>
+        <source>frontendbundle.column_name.action</source>
+        <target state="new">Acción</target>
+      </trans-unit>
+      <trans-unit id="658cf9bd52fd573e8c8499d6d62ec65f01125d42" resname="frontendbundle.column_name.aplication_type">
+        <jms:reference-file line="103">views/project/listProjectPanel.html.twig</jms:reference-file>
+        <source>frontendbundle.column_name.aplication_type</source>
+        <target state="new">Tipo de Aplicación</target>
+      </trans-unit>
+      <trans-unit id="20d194df58e1e3d6f4efa24a862dfd0e468e87eb" resname="frontendbundle.column_name.description">
+        <jms:reference-file line="102">views/project/listProjectPanel.html.twig</jms:reference-file>
+        <jms:reference-file line="26">views/project/modalAddProject.html.twig</jms:reference-file>
+        <jms:reference-file line="34">views/project/detailsPanel.html.twig</jms:reference-file>
+        <source>frontendbundle.column_name.description</source>
+        <target state="new">Descripción</target>
+      </trans-unit>
+      <trans-unit id="b42a8e064f5dca47e2700241d4148595c479d09d" resname="frontendbundle.column_name.id">
+        <jms:reference-file line="100">views/project/listProjectPanel.html.twig</jms:reference-file>
+        <source>frontendbundle.column_name.id</source>
+        <target state="new">Id</target>
+      </trans-unit>
+      <trans-unit id="34e4a4e6378e629b0dc50abeb44d0718eb088128" resname="frontendbundle.column_name.project">
+        <jms:reference-file line="101">views/project/listProjectPanel.html.twig</jms:reference-file>
+        <source>frontendbundle.column_name.project</source>
+        <target state="new">Vorhaben</target>
+      </trans-unit>
+      <trans-unit id="21ad2daca8116a5d91b6a78db57fd810dbf18d6a" resname="frontendbundle.field_label.state">
+        <jms:reference-file line="24">FrontendBundle/Form/DatApiType.php</jms:reference-file>
+        <source>frontendbundle.field_label.state</source>
+        <target state="new">Estado</target>
+      </trans-unit>
+      <trans-unit id="ffdc515c96fb78a620ad480092a349dd3bfbb7f9" resname="frontendbundle.field_placeholder.aplicationtype">
+        <jms:reference-file line="23">views/project/modalAddProject.html.twig</jms:reference-file>
+        <jms:reference-file line="41">views/project/detailsPanel.html.twig</jms:reference-file>
+        <source>frontendbundle.field_placeholder.aplicationtype</source>
+        <target state="new">Tipo de aplicación</target>
+      </trans-unit>
+      <trans-unit id="62d04036b104520c76e03ec6d768e74bc0c55d09" resname="frontendbundle.field_placeholder.name">
+        <jms:reference-file line="20">views/project/modalAddProject.html.twig</jms:reference-file>
+        <source>frontendbundle.field_placeholder.name</source>
+        <target state="new">Nombre</target>
+      </trans-unit>
+      <trans-unit id="e6da84c15088880d5f581e67b29f99300e398f03" resname="frontendbundle.field_tooltip.aplicationtype">
+        <jms:reference-file line="23">views/project/modalAddProject.html.twig</jms:reference-file>
+        <source>frontendbundle.field_tooltip.aplicationtype</source>
+        <target state="new">Tipo de api para el proyecto</target>
+      </trans-unit>
+      <trans-unit id="c90301a45ebfa967503102c9f92a4a10b309e6dc" resname="frontendbundle.field_tooltip.name">
+        <jms:reference-file line="20">views/project/modalAddProject.html.twig</jms:reference-file>
+        <source>frontendbundle.field_tooltip.name</source>
+        <target state="new">Nombre del proyecto</target>
+      </trans-unit>
+      <trans-unit id="94ffbe43b680fe03bebe99a6c2184b78820894d2" resname="frontendbundle.modal_title.addproject">
+        <jms:reference-file line="91">views/project/listProjectPanel.html.twig</jms:reference-file>
+        <jms:reference-file line="6">views/project/modalAddProject.html.twig</jms:reference-file>
+        <source>frontendbundle.modal_title.addproject</source>
+        <target state="new">Nuevo proyecto</target>
+      </trans-unit>
+      <trans-unit id="08831f189602a6589b1d13258d86cca343e3b46b" resname="frontendbundle.name.apis">
+        <jms:reference-file line="44">views/project/detailsPanel.html.twig</jms:reference-file>
+        <jms:reference-file line="44">FrontendBundle/Form/DatProjectType.php</jms:reference-file>
+        <source>frontendbundle.name.apis</source>
+        <target state="new">Apis</target>
+      </trans-unit>
+      <trans-unit id="74d27b1a49848bd092613ffcf34dc543709afe66" resname="frontendbundle.question.delete_project">
+        <jms:reference-file line="5">views/project/listProjectPanel.html.twig</jms:reference-file>
+        <source>frontendbundle.question.delete_project</source>
+        <target state="new">Desea eliminar este proyecto.</target>
+      </trans-unit>
+      <trans-unit id="9d82264b8db0e5077d515baba83bc3b429a848f0" resname="frontendbundle.question_btn.no">
+        <jms:reference-file line="7">views/project/listProjectPanel.html.twig</jms:reference-file>
+        <source>frontendbundle.question_btn.no</source>
+        <target state="new">NO</target>
+      </trans-unit>
+      <trans-unit id="865c301079aa68cb19cbf548ab29b51b733d739d" resname="frontendbundle.question_btn.yes">
+        <jms:reference-file line="6">views/project/listProjectPanel.html.twig</jms:reference-file>
+        <source>frontendbundle.question_btn.yes</source>
+        <target state="new">SI</target>
+      </trans-unit>
+      <trans-unit id="f3eb7b8d1282a9f36fd716e2621f854a6ba2191c" resname="frontendbundle.question_title.delete_project">
+        <jms:reference-file line="4">views/project/listProjectPanel.html.twig</jms:reference-file>
+        <source>frontendbundle.question_title.delete_project</source>
+        <target state="new">Eliminar</target>
+      </trans-unit>
+      <trans-unit id="a85fa496ae189b0ab6ceba761f7a8521530e7f06" resname="frontendbundle.tab.apis_keys">
+        <jms:reference-file line="13">views/project/modalAddProject.html.twig</jms:reference-file>
+        <source>frontendbundle.tab.apis_keys</source>
+        <target state="new">Apis y Claves</target>
+      </trans-unit>
+      <trans-unit id="5c67aba08200801cfb8f389bb1b300c0f2b82f07" resname="frontendbundle.tab.general">
+        <jms:reference-file line="11">views/project/modalAddProject.html.twig</jms:reference-file>
+        <source>frontendbundle.tab.general</source>
+        <target state="new">Generales</target>
+      </trans-unit>
+      <trans-unit id="9b3e0fc1942552567a2a2d9df30b120b19f11e85" resname="frontendbundle.tab.urls">
+        <jms:reference-file line="12">views/project/modalAddProject.html.twig</jms:reference-file>
+        <jms:reference-file line="50">views/project/detailsPanel.html.twig</jms:reference-file>
+        <jms:reference-file line="37">FrontendBundle/Form/DatProjectType.php</jms:reference-file>
+        <source>frontendbundle.tab.urls</source>
+        <target state="new">Urls</target>
+      </trans-unit>
+      <trans-unit id="9184fdbdf098b699eb1f5f64d3ef275a04644ab2" resname="frontendbundle.table_name.projects">
+        <jms:reference-file line="77">views/project/listProjectPanel.html.twig</jms:reference-file>
+        <source>frontendbundle.table_name.projects</source>
+        <target state="new">Mis proyectos</target>
+      </trans-unit>
+      <trans-unit id="91d4192ac81c81396740095f3b9adc9156bad021" resname="frontendbundle.title.edit_project">
+        <jms:reference-file line="6">views/project/modalAddProject.html.twig</jms:reference-file>
+        <source>frontendbundle.title.edit_project</source>
+        <target state="new">Editar proyecto</target>
+      </trans-unit>
+      <trans-unit id="fb96f9b41a373322de30c4e26d3762ae75e9a0a9" resname="frontendbundle.tooltip.description">
+        <jms:reference-file line="26">views/project/modalAddProject.html.twig</jms:reference-file>
+        <source>frontendbundle.tooltip.description</source>
+        <target state="new">Descripción del proyecto</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

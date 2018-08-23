@@ -1,0 +1,59 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <span class="hide">
+                            <img alt="image" class="img-circle" src="{{ asset('bundles/frontend/img/profile-picture.png') }}"/>
+                             </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ app.user.username }}</strong>
+                             </span> {#<span class="text-muted text-xs block ">Art Director <b class="caret"></b></span>#} </span> </a>
+                    {#<ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="contacts.html">Contacts</a></li>
+                        <li><a href="mailbox.html">Mailbox</a></li>
+                        <li class="divider"></li>
+                        <li><a href="login.html">Logout</a></li>
+                    </ul>#}
+                </div>
+            </li>
+            <li class="active">
+                <a><i class="fa fa-th-large"></i> <span class="nav-label">Configuración</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li class="active"><a class="ajaxify" data-href="{{ path('backend_main_api') }}" id="gest-api">{{ 'Gestionar apis' | trans }}</a></li>
+                    <li><a class="ajaxify" data-href="{{ path('backend_main_project') }}" id="gest-project">{{ 'Gestionar proyectos' | trans }}</a></li>
+                </ul>
+            </li>
+            <li>
+                <a><i class="fa fa-th-large"></i> <span class="nav-label">{{ 'Nomencladores' | trans }}</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li class="">
+                        <a href="#">CBS <span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level collapse" style="height: 0px;">
+                            <li><a class="ajaxify" data-href="{{ path('backend_main_nomencladores') }}" id="NomApiType">{{ 'Tipos de api' | trans }}</a></li>
+                            <li><a class="ajaxify" data-href="{{ path('backend_main_nomencladores') }}" id="NomApplicationType">{{ 'Tipos de aplicaciones' | trans }}</a></li>
+                            <li><a class="ajaxify" data-href="{{ path('backend_main_nomencladores') }}" id="NomDriver">{{ 'Driver' | trans }}</a></li>
+                        </ul>
+                    </li>
+                   {# <li class="">
+                        <a href="#">Sabrus <span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level collapse" style="height: 0px;">
+                            <li><a class="ajaxify" href="{{ path('backend_main_nomenclator') }}" data-project="sabrus" id="profession">Profession</a></li>
+                            <li><a class="ajaxify" href="{{ path('backend_main_nomenclator') }}" data-project="sabrus" id="cuisine_style">Estilo de cocina</a></li>
+                        </ul>
+                    </li>#}
+
+                </ul>
+            </li>
+            <li>
+                <a><i class="fa fa-th-large"></i> <span class="nav-label">{{ 'Seguridad' | trans }}</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a class="ajaxify" data-href="{{ path('user_user') }}" id="gest-user">{{ 'Usuarios' | trans }}</a></li>
+                    <li><a class="ajaxify" data-href="{{ path('user_rol') }}" id="gest-rol">{{ 'Roles' | trans }}</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</nav>

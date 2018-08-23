@@ -1,0 +1,33 @@
+.landing-page .navbar-default .nav li a {
+  color: #ececec;
+}
+
+.ibox-content {
+  border: none;
+}
+
+/*.loginColumns {
+  padding: 20px;
+}*/
+
+.toOr {
+  line-height: 1.5625 !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  padding: 0 !important !important;
+  box-sizing: border-box !important;
+  height: 307px !important;
+  /*width: auto !important;*/
+  font-size: 20px;
+  width: 5% !important;
+}
+
+.or {
+  position: relative;
+  float: inherit;
+  margin-top: -5px;
+  margin-left: -5px;
+  font-size: 16px;
+  color: #fff;
+}

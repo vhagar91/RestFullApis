@@ -1,0 +1,42 @@
+nomenclator:
+    resource: "@NomenclatorBundle/Resources/config/routing.yml"
+    prefix:   /
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+#Route backend
+backend:
+    resource: "@BackendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+#Route frontend
+frontend:
+    resource: "@FrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@FrontendBundle/Controller/"
+    type:     annotation
+
+#Route Fos user
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+#Route api version 1 doc
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+#Route api rest
+rest:
+    resource: "@RestBundle/Resources/config/routing.yml"
+    type: rest
+    prefix: /api

@@ -1,0 +1,34 @@
+<div class="navbar-wrapper">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                {#<a class="navbar-brand" href="{{ path('homepage') }}">CBS</a>#}
+              {#  <img id="logo1" style="margin-top: 8px" href="{{ path('homepage') }}" src="{{ asset('bundles/frontend/img/logo-mayor.png') }}" alt="Home" class="img-responsive">
+                <img id="logo2" style="margin-top: 8px" href="{{ path('homepage') }}" src="{{ asset('bundles/frontend/img/logo-menor.png') }}" alt="Home" class="img-responsive hide">#}
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+               {# <div class="nav navbar-nav navbar-right">
+                    {{include('FrontendBundle:language:switch.html.twig')}}
+                </div>#}
+                <ul class="nav navbar-nav navbar-right">
+                    {% if app.user is not null and (is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED')) %}
+                        <li id="home-link-1"><a class="page-scroll" href="{{ path('homepage') }}">{{ 'frontendbundle.buttonhome.name'|trans }}</a></li>
+                        <li id="home-link-0"><a class="page-scroll" href="{{ path('fos_user_security_logout') }}">{{ 'frontendbundle.buttonlogout.name'|trans }}</a></li>
+                    {% else %}
+                        <li id="home-link-0"><a class="page-scroll" href=" {% if register is defined %} {{ path('user_login') }} {% else %} #login-form {% endif %}">{{ 'frontendbundle.buttonlogin.name'|trans }}</a></li>
+                    {% endif %}
+                  {#  <li id="home-link-2" class="hide"><a class="page-scroll" href="#features">Features</a></li>
+                    <li id="home-link-3" class="hide"><a class="page-scroll" href="#team">Team</a></li>
+                    <li id="home-link-4" class="hide"><a class="page-scroll" href="#pricing">Pricing</a></li>
+                    <li id="home-link-5" class="hide"><a class="page-scroll" href="#contact">Contact</a></li>#}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>

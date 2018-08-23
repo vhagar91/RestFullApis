@@ -1,0 +1,24 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+imports:
+    - { resource: "@RestBundle/Resources/config/services.yml" }
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    access_token.user_provider:
+        class: UserBundle\Security\AccessTokenUserProvider
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
+    access_token.authenticator:
+        class: UserBundle\Security\AccessTokenAuthenticator
+#        public: false
+
+
+#    my.subscriber:
+#        class: BackendBundle\Controller\SearchIndexerSubscriber
+#        tags:
+#                - { name: doctrine.event_subscriber, connection: default }

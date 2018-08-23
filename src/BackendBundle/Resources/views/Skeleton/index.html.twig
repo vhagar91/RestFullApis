@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CBS | Dashboard</title>
+    {{ include('BackendBundle:Skeleton:css.html.twig') }}
+
+</head>
+
+<body onload="loadComplete = true">
+<div id="wrapper">
+    {{ include('BackendBundle:Skeleton:menu.html.twig') }}
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" action="search_results.html">
+                        <div class="form-group hide">
+                            <input type="text" placeholder="{{ 'Search for something...' | trans }}" class="form-control" name="top-search" id="top-search">
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li id="home-link-1"><a class="page-scroll" href="{{ path('homepage') }}"> <i class="fa fa-home"></i>{{ 'frontendbundle.buttonhome.name'|trans }}</a></li>
+                    <li>
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            <i class="fa fa-sign-out"></i> {{ 'frontendbundle.buttonlogout.name'|trans }}
+                        </a>
+                    </li>
+                    <li style="vertical-align: top; margin-top: 6px;">
+                        <a id="a-changeLocale" class="no-search">
+                            <select id="changeLocale" class="chosen-select-deselect form-control" onchange="window.location = this.value">
+                                {% for language in language_repository.findAll() %}
+                                    {% set active = "" %}
+                                    {% set url = app.request.get('_route') %}
+                                    {% set url_params = app.request.get('_route_params') %}
+                                    {% if app.request.locale == language.code %}
+                                        {% set active = 'selected=selected' %}
+                                    {% endif %}
+                                    <option {{ active }} value="{{ url(url, url_params|merge({'_locale':language.code})) }}">{{ language.code | upper }}</option>
+                                {% endfor %}
+                            </select>
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <div class="row" style="margin-top: 5px">
+            {{ include('BackendBundle:Skeleton:tabPanel.html.twig') }}
+        </div>
+    </div>
+</div>
+{{ include('BackendBundle:Skeleton:javascript.html.twig') }}
+    <script>
+        var id_active="";
+        var url_active = "";
+        var array_Tab={};
+        /**
+         * Función para actualizar el tab en caso de q no le pasen parametros actualiza el tab actual
+         * @param url url q se llama q renderiza la vista
+         * @param id id del tab activo
+         * @param data objeto que es pasado a la petición
+         */
+        function updateTab(url,id,data){
+            HoldOn.open();
+            var data=(data=="")?{}:data;
+            $.post((url=="")?array_Tab[getActive()]:url,
+                    data,
+                    function (data, status, response) {
+                        HoldOn.close();
+                        var tab_active=(id=="")?id_active:id;
+                        if (status && status == 'success'){
+                            var ta = $('#tab_'+tab_active);
+                            ta.html('');
+                            ta.html(data.html);
+                        }
+                    });
+        }
+        /**
+         * Función que retorna el id del tab activo
+         * @returns {string}
+         */
+        function getActive(){
+            return id_active;
+        }
+        /**
+         * Función q retorna la url del tab activo
+         * @returns {string}
+         */
+        function getUrlActive(){
+            return url_active;
+        }
+        /**
+         * Función para eliminar un tab
+         * @param el tab a eliminar
+         */
+        function closeTab(el) {
+            //there are multiple elements which has .closeTab icon so close the tab whose close icon is clicked
+            var tabContentId = el.parent().data('tab');
+            el.parent().parent().remove(); //remove li of tab
+            $('#nav-tabs-backend a:last').tab('show'); // Select first tab
+            $('#tab_'+tabContentId).remove(); //remove respective tab content
+            array_Tab[tabContentId]="";
+        }
+        jQuery.fn.reset = function () {
+            $(this).each (function() { this.reset(); });
+        }
+        /**
+         * Función para resetear un formulario
+         */
+        function resetForm(el){
+            $('#'+el).reset();
+        }
+        $(document).ready(function() {
+            //Para cuando se cambia el tab, seleccionando el mismo
+           $(document).on( 'shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+               if(array_Tab[$(this).attr("id")]){
+                   //Le quito la clase al que esta activo
+                   $('#nav_'+id_active+'').removeClass('active');
+                   $('#tab_'+id_active+'').removeClass('active');
+                   //Si existe lo activo
+                   $('#nav_'+$(this).attr("id")+'').addClass('active');
+                   $('#tab_'+$(this).attr("id")+'').addClass('active');
+                   id_active=$(this).attr("id");
+               }
+            });
+
+            //Para cuando se selecciona un link del menu
+            jQuery('.sidebar-collapse').on('click', ' li > a.ajaxify', function (e) {
+                e.preventDefault();
+                var self=$(this);
+                //Busco por si ha sido seleccionado previamente
+                if(array_Tab[$(this).attr("id")]){
+                    //Le quito la clase al que esta activo
+                    $('#nav_'+id_active+'').removeClass('active');
+                    $('#tab_'+id_active+'').removeClass('active');
+                    //Si existe lo activo
+                    $('#nav_'+$(this).attr("id")+'').addClass('active');
+                    $('#tab_'+$(this).attr("id")+'').addClass('active');
+                    id_active=$(this).attr("id");
+                }
+                else{
+                    var data={idTab:'tab_'+$(this).attr("id"),class:$(this).attr("id"),projet:$(this).data("project")};
+                    //Lo adiciono al arreglo
+                    array_Tab[$(this).attr("id")] = $(this).data("href");
+                    HoldOn.open();
+                    //Función q retorna el html de la respuesta
+                    $.post( $(this).data("href"),data,
+                        function (data, status, response) {
+                            if (status && status == 'success') {
+                                //Le quito la clase al que esta activo en caso de que tenga algun tab
+                                if(id_active!==''){
+                                    $('#nav_'+id_active+'').removeClass('active');
+                                    $('#tab_'+id_active+'').removeClass('active');
+                                }
+                                //Lo adiciono y lo activo
+                                $('#nav-tabs-backend').append('<li id="nav_'+self.attr("id")+'" class="active"><a id="'+self.attr("id")+'" data-toggle="tab" href="#tab'+self.attr("id")+'" data-tab="'+self.attr("id")+'">'+self.context.innerHTML+'<span class="closeTab" onclick="closeTab($(this))">×</span></a></li>');
+                                //Adiciono el contenido del tab
+                                $('#tab-content-backend').append('<div id="tab_'+self.attr("id")+'" class="tab-pane active">'
+                                +data.html
+                                +'</div>');
+                                id_active=self.attr("id");
+                                HoldOn.close();
+                            }
+                        });
+                }
+            });
+
+            $('#changeLocale').chosen();
+        });
+    </script>
+</body>
+</html>
